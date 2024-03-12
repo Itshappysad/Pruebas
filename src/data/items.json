@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Camisa",
+    "price": 110999,
+    "imgUrl": "/imgs/shirt.png"
+  },
+  {
+    "id": 2,
+    "name": "Sudadera",
+    "price": 150000,
+    "imgUrl": "/imgs/joggers.png"
+  }
+]
