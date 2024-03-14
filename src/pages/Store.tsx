@@ -6,18 +6,23 @@ import { useState } from "react";
 
 export function Store() {
   const [buttonPopup, setButtonPopup] = useState(false);
+  const hidden = {
+    display: "none",
+  };
   return (
     <>
       <h1>
         <center>Tienda principal</center>
       </h1>
-      <Row md={2} xs={1} lg={2} className="g-3">
+      <Row
+        md={2}
+        xs={1}
+        lg={2}
+        className="g-3"
+        style={buttonPopup ? { display: "none" } : {}}
+      >
         {storeItems.map((item) => (
           <Col key={item.id}>
-            <button onClick={() => setButtonPopup(true)}>Opn</button>
-            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-              <h1>stest</h1>
-            </Popup>
             <StoreItem {...item} />
           </Col>
         ))}
