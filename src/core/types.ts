@@ -5,3 +5,12 @@ export type ResgisterUser = {
   id: string;
   provider?: string | null;
 };
+
+export type Product = {
+  id: number;
+  name: string;
+  price: number;
+  imgUrl: string;
+  colors: string[];
+  sizes: string[];
+};

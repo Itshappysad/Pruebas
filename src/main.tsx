@@ -1,55 +1,46 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import SignUp from "./pages/sign-up/index.tsx";
-import ProtectedRoute from "./components/auth-protected.tsx";
-import { Home } from "./pages/Home.tsx";
-import { Store } from "./pages/Store.tsx";
-import { About } from "./pages/About.tsx";
-import "../firebase.config.ts";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import SignUp from './pages/sign-up/index.tsx';
+import { Home } from './pages/Home.tsx';
+import { Store } from './pages/Store.tsx';
+import { About } from './pages/About.tsx';
+import '../firebase.config.ts';
+import { AuthProvider } from './context/useAuth.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
+
     children: [
       {
-        path: "/",
-        element: (
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        ),
+        path: '/',
+        element: <Home />,
       },
       {
-        path: "/store",
-        element: (
-          <ProtectedRoute>
-            <Store />
-          </ProtectedRoute>
-        ),
+        path: '/store',
+        element: <Store />,
       },
       {
-        path: "/about",
-        element: (
-          <ProtectedRoute>
-            <About />
-          </ProtectedRoute>
-        ),
+        path: '/about',
+        element: <About />,
       },
     ],
   },
   {
-    path: "/signUp",
+    path: '/signUp',
     element: <SignUp />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 );
