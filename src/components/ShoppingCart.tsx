@@ -31,6 +31,19 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               }, 0)
             )}
           </div>
+          <div className="flex justify-center mt-8">
+            <button
+              /*stripe */
+              className="
+               py-2 px-3 bg-blue-600 font-bold rounded-x1 text-white transition-transform 
+                hover:bg-blue-500
+                active:scale-85 
+                absolute inset-x-0 bottom-0 h16 
+              "
+            >
+              Pagar
+            </button>
+          </div>
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>

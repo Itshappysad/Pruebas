@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 export function About() {
   return (
     <div className="about-page">
@@ -31,6 +32,9 @@ export function About() {
         Nuestro equipo está compuesto por profesionales altamente capacitados y
         apasionados por la tecnología y la moda.
       </p>
+      <>
+        <Footer></Footer>
+      </>
     </div>
   );
 }
