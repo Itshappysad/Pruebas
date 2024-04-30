@@ -44,8 +44,8 @@ function SignInForm() {
       <div className="flex justify-center mt-8">
         <button
           className="
-            py-2 px-3 bg-violet-950 font-bold rounded-xl text-white transition-transform
-            hover:bg-black
+            py-2 px-3 bg-gray-800 font-bold rounded-xl text-white transition-transform
+            hover:bg-gray-400
             active:scale-95
             disabled:bg-lime-900
           "

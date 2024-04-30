@@ -14,3 +14,10 @@ export type Product = {
   colors: string[];
   sizes: string[];
 };
+
+export type Subscription = {
+  id: number;
+  name: string;
+  price: number;
+  imgUrl: string;
+};

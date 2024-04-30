@@ -78,6 +78,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       return currItems.filter((item) => item.id !== id);
     });
   }
+
   return (
     <ShoppingCartContext.Provider
       value={{

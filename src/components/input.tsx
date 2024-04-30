@@ -26,7 +26,7 @@ const showType = ({
 
 const Input = forwardRef<null, Props>(function Input(
   { className, name, error, type, ...props },
-  ref,
+  ref
 ) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,12 +38,12 @@ const Input = forwardRef<null, Props>(function Input(
           className={cn(
             `
               outline outline-[1px] outline-gray-500 text-lg rounded w-full bg-white
-              focus:outline-green-500 focus:outline-2
+              focus:outline-blue-500 focus:outline-2
             `,
             {
               "outline-red-500 outline-2": !!error,
             },
-            className,
+            className
           )}
           name={name}
           ref={ref}

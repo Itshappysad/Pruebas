@@ -23,8 +23,8 @@ function GoogleSignIn() {
         navigate("/", { replace: true });
       }}
       className="
-        flex items-center gap-1 py-2 px-3 border-2 border-violet-900 rounded-lg
-        hover:bg-violet-100
+        flex items-center gap-1 py-2 px-3 border-2 border-gray-800 rounded-lg
+        hover:bg-gray-100
       "
       type="button"
     >

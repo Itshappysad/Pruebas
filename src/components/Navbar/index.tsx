@@ -11,7 +11,7 @@ export function Navbar() {
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
-        <Nav className="me-auto">
+        <Nav className="me-px">
           <Nav.Link to="/" as={NavLink}>
             Menu
           </Nav.Link>
@@ -22,6 +22,9 @@ export function Navbar() {
             Sobre nosotros
           </Nav.Link>
         </Nav>
+
+        <h1 className="text-center   font-extrabold	">Avocado-e-Vestiti</h1>
+
         <div className="d-flex justify-content-space-between ">
           {cartQuantity > 0 && (
             <Button
@@ -70,18 +73,18 @@ export function Navbar() {
             variant="outline-secondary"
           >
             <svg
+              viewBox="2.5 2 31 24"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
               fill="currentColor"
-              width="30"
-              height="30"
+              width="40"
+              height="40"
             >
-              {" "}
-              <g>
-                <circle cx="64" cy="254" r="42" />
-                <circle cx="224" cy="254" r="42" />
-                <circle cx="384" cy="254" r="42" />
-              </g>
+              <title />
+              <circle cx="12" cy="8" fill="currentColor" r="4" />
+              <path
+                d="M20,19v1a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V19a6,6,0,0,1,6-6h4A6,6,0,0,1,20,19Z"
+                fill="currentColor"
+              />
             </svg>
           </Button>
         </div>
