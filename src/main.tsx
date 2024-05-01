@@ -10,6 +10,8 @@ import { Store } from './pages/Store.tsx';
 import { About } from './pages/About.tsx';
 import '../firebase.config.ts';
 import { AuthProvider } from './context/useAuth.tsx';
+import EditUser from './pages/EditUser.tsx';
+import { Toaster } from 'sonner';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
         path: '/about',
         element: <About />,
       },
+      {
+        path: '/edituser',
+        element: <EditUser />,
+      },
     ],
   },
   {
@@ -40,6 +46,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
+      <Toaster richColors />
       <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,

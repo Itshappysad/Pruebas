@@ -7,10 +7,9 @@ export type ResgisterUser = {
 };
 
 export type Product = {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  imgUrl: string;
   colors: string[];
   sizes: string[];
 };

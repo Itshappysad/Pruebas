@@ -1,7 +1,17 @@
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  setDoc,
+  where,
+} from 'firebase/firestore';
 import { app } from '../../firebase.config';
-import { ResgisterUser } from './types';
+import { Product, ResgisterUser } from './types';
 import { FirebaseError } from 'firebase/app';
+import { EditUser } from '../schemas/edit';
 
 export const database = getFirestore(app);
 
@@ -39,4 +49,35 @@ export async function getUser(id: string): Promise<User | null> {
   }
 }
 
-//TODO: Añadir manejo de produtos en la base de datos
+export async function editUser({
+  email,
+  userData,
+}: {
+  email: string;
+  userData: EditUser;
+}) {
+  try {
+    const userDocs = await getDocs(
+      query(collection(database, 'users'), where('email', '==', email)),
+    );
+
+    const userId = userDocs.docs[0].id;
+
+    await setDoc(doc(database, 'users', userId), userData, { merge: true });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+export async function getProducts() {
+  try {
+    const productDocs = await getDocs(query(collection(database, 'items')));
+    const productData = productDocs.docs.map(
+      d => ({ id: d.id, ...d.data() } as Product),
+    );
+    return productData;
+  } catch (e) {
+    return null;
+  }
+}
