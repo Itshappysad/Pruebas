@@ -2,6 +2,11 @@ import Footer from "../components/Footer";
 export function About() {
   return (
     <div className="about-page">
+      <img
+        src="imgs/AeVlogo.jpeg"
+        alt="logo"
+        className="max-h-48 max-y-48 rounded-full float-right"
+      />
       <h1>Quienes somos?</h1>
       <h2>Nuestra misión</h2>
       <p>
