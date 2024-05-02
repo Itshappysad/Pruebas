@@ -1,23 +1,24 @@
 import {
   collection,
   doc,
+  documentId,
   getDoc,
   getDocs,
   getFirestore,
   query,
   setDoc,
   where,
-} from 'firebase/firestore';
-import { app } from '../../firebase.config';
-import { Product, ResgisterUser } from './types';
-import { FirebaseError } from 'firebase/app';
-import { EditUser } from '../schemas/edit';
+} from "firebase/firestore";
+import { app } from "../../firebase.config";
+import { Product, ResgisterUser } from "./types";
+import { FirebaseError } from "firebase/app";
+import { EditUser } from "../schemas/edit";
 
 export const database = getFirestore(app);
 
 export async function registerUser({ id, ...userInfo }: ResgisterUser) {
   try {
-    await setDoc(doc(database, 'users', id), {
+    await setDoc(doc(database, "users", id), {
       ...userInfo,
     });
     return true;
@@ -38,7 +39,7 @@ export type User = {
 
 export async function getUser(id: string): Promise<User | null> {
   try {
-    const userSnap = await getDoc(doc(database, 'users', id));
+    const userSnap = await getDoc(doc(database, "users", id));
     if (!userSnap.exists()) return null;
     return userSnap.data() as User;
   } catch (e) {
@@ -58,12 +59,12 @@ export async function editUser({
 }) {
   try {
     const userDocs = await getDocs(
-      query(collection(database, 'users'), where('email', '==', email)),
+      query(collection(database, "users"), where("email", "==", email))
     );
 
     const userId = userDocs.docs[0].id;
 
-    await setDoc(doc(database, 'users', userId), userData, { merge: true });
+    await setDoc(doc(database, "users", userId), userData, { merge: true });
     return true;
   } catch (e) {
     return false;
@@ -72,12 +73,27 @@ export async function editUser({
 
 export async function getProducts() {
   try {
-    const productDocs = await getDocs(query(collection(database, 'items')));
+    const productDocs = await getDocs(query(collection(database, "items")));
     const productData = productDocs.docs.map(
-      d => ({ id: d.id, ...d.data() } as Product),
+      (d) => ({ id: d.id, ...d.data() } as Product)
     );
     return productData;
   } catch (e) {
+    return null;
+  }
+}
+
+export async function getCartItems(ids: string[]) {
+  try {
+    const productDocs = await getDocs(
+      query(collection(database, "items"), where(documentId(), "in", ids))
+    );
+    const productData = productDocs.docs.map(
+      (d) => ({ id: d.id, ...d.data() } as Product)
+    );
+    console.log(productData);
+    return productData;
+  } catch (error) {
     return null;
   }
 }

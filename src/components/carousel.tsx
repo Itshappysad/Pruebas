@@ -22,7 +22,7 @@ const Carousel = () => {
       <div className="snap-center shrink-0 first:pl-8 last:pr-8   ">
         <img
           className="shrink-0 w-56 h-64 rounded-lg shadow-xl bg-white"
-          src="public\imgs\shirt.png"
+          src="public\imgs\LExTeFIPrhB3JmFZLeyY.png"
           alt="shirt1"
         />
       </div>
@@ -30,7 +30,7 @@ const Carousel = () => {
       <div className="snap-center shrink-0 first:pl-8 last:pr-8   ">
         <img
           className="shrink-0 w-56 h-64 rounded-lg shadow-xl bg-white"
-          src="public\imgs\joggers.png"
+          src="public\imgs\Tg3b3pANUgyYe4cf98Ss.png"
           alt=" bruh2"
         />
       </div>

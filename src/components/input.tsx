@@ -37,7 +37,7 @@ const Input = forwardRef<null, Props>(function Input(
           {...props}
           className={cn(
             `
-              outline outline-[1px] outline-gray-500 text-lg rounded w-full bg-white
+              outline outline-[1px] outline-gray-400 text-lg rounded w-full bg-white
               focus:outline-blue-500 focus:outline-2
             `,
             {
