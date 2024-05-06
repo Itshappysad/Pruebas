@@ -31,6 +31,7 @@ export async function registerUser({ id, ...userInfo }: ResgisterUser) {
 }
 
 export type User = {
+  id: string;
   name: string;
   email: string;
   password?: string;
@@ -41,7 +42,7 @@ export async function getUser(id: string): Promise<User | null> {
   try {
     const userSnap = await getDoc(doc(database, "users", id));
     if (!userSnap.exists()) return null;
-    return userSnap.data() as User;
+    return { id, ...userSnap.data() } as User;
   } catch (e) {
     if (e instanceof FirebaseError) {
       console.error(e);
