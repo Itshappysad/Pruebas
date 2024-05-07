@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../core/auth';
-import { User, database, getUser } from '../core/database';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../core/auth";
+import { User, database, getUser } from "../core/database";
+import { doc, onSnapshot } from "firebase/firestore";
 
 type AuthContextProps = {
   user: User | null;
@@ -16,13 +16,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(async u => {
+    auth.onAuthStateChanged(async (u) => {
       if (!u) return setUser(null);
 
       const dbUser = await getUser(u.uid);
 
-      onSnapshot(doc(database, 'users', u.uid), doc => {
-        setUser(doc.data() as User);
+      onSnapshot(doc(database, "users", u.uid), (doc) => {
+        setUser({ id: u.uid, ...doc.data() } as User);
       });
 
       setUser(dbUser);

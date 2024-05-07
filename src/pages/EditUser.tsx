@@ -8,10 +8,8 @@ import Input from "../components/input";
 import { Button } from "../components/ui/button";
 import { editUser } from "../core/database";
 import { toast } from "sonner";
-import {
-  ProfilePicture,
-  ProfilePictureButtons,
-} from "../components/ProfilePic";
+import ProfilePicture from "../components/ProfilePic";
+import ProfilePictureButtons from "../components/ProfileButton";
 
 function EditUser() {
   const { user } = useAuth();
@@ -56,10 +54,15 @@ function EditUser() {
         className="px-10 flex flex-col gap-1"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex">
+        <div className="flex gap-6">
           <div className="flex-col">
-            <ProfilePicture />
-            <ProfilePictureButtons />
+            {user && (
+              <>
+                <ProfilePicture id={user.id} />
+                <ProfilePictureButtons id={user.id} />
+                {/* Te lo juro que si hay un ID */}
+              </>
+            )}
           </div>
 
           <div className="flex flex-col ">
@@ -80,6 +83,24 @@ function EditUser() {
               <Input {...register("email")} />
               <p className="font-extralight py-1">
                 Aqui puedes cambiar los datos sobre tu correo electronico
+              </p>
+            </div>
+            <div>
+              <label className="font-bold py-2" htmlFor="address">
+                Dirrección:
+              </label>
+              <Input {...register("address")} />
+              <p className="font-extralight py-1">
+                Aqui puedes cambiar los datos sobre tu dirrecion
+              </p>
+            </div>
+            <div>
+              <label className="font-bold py-2" htmlFor="postalcode">
+                Codigo Postal:
+              </label>
+              <Input {...register("postalcode")} />
+              <p className="font-extralight py-1">
+                Aqui puedes cambiar los datos sobre tu codigo postal
               </p>
             </div>
             <div className="pt-36">
