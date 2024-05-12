@@ -1,14 +1,12 @@
-import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   return (
-    <div className='footer mt-20'>
-      <div className='bubbles shadow-sm mb-3' />
-      <div className='content  '>
-        <div className='footer.content'>
+    <>
+      <div className='footer'>
+        <div className='content'>
           <div>
-            <h6> Contactanos</h6>
+            <h5>Contacto</h5>
             <a
               href='https://www.instagram.com/avocadoevestiti/'
               target='_blank'
@@ -16,14 +14,16 @@ const Footer = () => {
               Instagram
             </a>
           </div>
-
           <div>
-            <h6>Informacion</h6>
-            <Link to='/About'>Sobre nosotros</Link>
+            <h5>Información</h5>
+            <a
+              href='/About'
+            >
+              Sobre nosotros
+            </a>
           </div>
-
           <div>
-            <h6>Ayuda</h6>
+            <h5>Soporte</h5>
             <a
               href='https://www.instagram.com/avocadoevestiti/'
               target='_blank'
@@ -32,11 +32,9 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div>
-          <p>&copy;2024 Avocado e Vestiti Incorporated</p>
-        </div>
+        <p>©2024 Avocado e Vestiti Incorporated</p>
       </div>
-    </div>
+    </>
   );
 };
 
