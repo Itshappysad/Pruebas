@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SignUp from './pages/sign-up/index.tsx';
 import { Home } from './pages/Home.tsx';
 import { Store } from './pages/Store.tsx';
+import { Product } from './pages/Product.tsx';
 import { About } from './pages/About.tsx';
 import '../firebase.config.ts';
 import { AuthProvider } from './context/useAuth.tsx';
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/edituser',
         element: <EditUser />,
+      },
+      {
+        path: '/product',
+        element: <Product />,
       },
     ],
   },
