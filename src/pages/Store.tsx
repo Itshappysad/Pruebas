@@ -4,6 +4,7 @@ import { type Product } from '../core/types';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../core/database';
 import { toast } from 'sonner';
+import './Store.css';
 
 export function Store() {
   const [storeItems, setStoreItems] = useState<Product[] | null>(null);
@@ -24,14 +25,15 @@ export function Store() {
 
   return (
     <>
-      <h1 className='text-center'>Tienda principal</h1>
-      <Row md={2} xs={1} lg={2} className='g-3'>
-        {storeItems?.map(item => (
-          <Col key={item.id}>
-            <StoreItem product={item} />
-          </Col>
-        ))}
-      </Row>
+      <div className="store">
+        <Row md={2} xs={1} lg={2} className='g-3'>
+          {storeItems?.map(item => (
+            <Col key={item.id}>
+              <StoreItem product={item} />
+            </Col>
+          ))}
+        </Row>
+      </div>
     </>
   );
 }

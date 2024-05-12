@@ -5,7 +5,7 @@ const Banner = () => {
       {/* TODO: apuntar link a producto con descuento */}
       <a href="/store" className="text-decoration-line: none">
         <img
-          className="grid__item-image saturate-50 js-grid__item-image grid__item-image-lazy js-lazy grid__item-trigger image-loaded relative w-full  h-full  object-cover shadow-sm  place-items-stretch "
+          className="grid__item-image saturate-50 js-grid__item-image grid__item-image-lazy js-lazy grid__item-trigger image-loaded relative w-full  h-full  object-cover shadow-sm  place-items-stretch rounded "
           loading="lazy"
           src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ec50c4129529089.616ef0ece9ea5.gif"
           alt=""

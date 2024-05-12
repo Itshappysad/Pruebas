@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { Outlet } from "react-router-dom";
+import './App.css'
 
 
 function App() {
@@ -21,5 +22,3 @@ function App() {
 }
 
 export default App;
-
-/* https://www.youtube.com/watch?v=lATafp15HWA refference*/

@@ -1,0 +1,8 @@
+.store{
+  padding: 1rem 5rem;
+}
+
+.store .title{
+  text-align: center;
+  font-size: 44px;
+}

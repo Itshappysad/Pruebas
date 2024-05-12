@@ -6,7 +6,7 @@ export function About() {
         alt="logo"
         className="max-h-48 max-y-48 rounded-full float-right"
       />
-      <h1>Quienes somos?</h1>
+      <h1>¿Quiénes somos?</h1>
       <h2>Nuestra misión</h2>
       <p>
         Nuestra misión es proporcionar soluciones tecnológicas innovadoras y de

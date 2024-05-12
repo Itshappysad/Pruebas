@@ -4,6 +4,7 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { Settings } from '../Settings';
 import { useModal } from './hooks';
 import { useAuth } from '../../context/useAuth';
+import './styles.css';
 
 export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart();
@@ -21,14 +22,11 @@ export function Navbar() {
           <Nav.Link to='/store' as={NavLink}>
             Tienda
           </Nav.Link>
-          <Nav.Link to='/about' as={NavLink}>
-            Sobre nosotros
-          </Nav.Link>
         </Nav>
 
-        <h1 className='text-center   font-extrabold	'>Avocado-e-Vestiti</h1>
+        <h1 className="title font-cursive">Avocado-e-Vestiti</h1>
 
-        <div className='d-flex justify-content-space-between '>
+        <div className='open-cart-button d-flex justify-content-space-between'>
           {cartQuantity > 0 && (
             <Button
               onClick={openCart}
