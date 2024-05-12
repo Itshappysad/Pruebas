@@ -1,12 +1,10 @@
 .footer {
-  z-index: 1;
   --footer-background: #ffffff;
   background-color: #ffffff;
-
   height: auto;
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
   padding: 1rem 10rem;
+  border-top: 3px solid #e3e2de;
 }
 
 .footer .content {
@@ -15,8 +13,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   background: var(--footer-background);
 }
-
-
 
 .footer a {
   color: #242424;
