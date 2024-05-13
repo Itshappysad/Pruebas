@@ -93,7 +93,29 @@ export async function getProducts() {
     );
     return productData;
   } catch (e) {
+    if (e instanceof FirebaseError) {
+      console.error(e);
+    }
     return null;
+  }
+}
+
+export async function getProductsByCategory(category: string): Promise<Product[] | null> {
+  try {
+    const itemsRef = collection(database, 'items')
+    const q = query(itemsRef, where('categories', 'array-contains', category))
+    const querySnapshot = await getDocs(q)
+    const products: Product[] = []
+    
+    querySnapshot.forEach((doc) => {
+      products.push({ id: doc.id, ...doc.data() } as Product)
+    })
+
+    return products
+
+  } catch (error) {
+    console.error('Error fetching products by category:', error)
+    return null
   }
 }
 

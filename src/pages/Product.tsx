@@ -1,8 +1,8 @@
-import { StoreItem } from '../components/StoreItem'
-import { useParams } from 'react-router-dom'
-import { Product as ProdType } from "../core/types"
 import { getProduct } from '../core/database'
+import { Product as ProdType } from "../core/types"
+import { StoreItem } from '../components/StoreItem'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export function Product() {
   const id = useParams().id

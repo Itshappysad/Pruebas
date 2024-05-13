@@ -15,16 +15,27 @@ export function Navbar() {
   return (
     <NavbarBs sticky='top' className='bg-white shadow-sm mb-3'>
       <Container>
+        <a className="navbar-title-link" href="/">
+          <h1 className="navbar-title font-cursive">Avocado -e- Vestiti</h1>
+        </a>
+        
         <Nav className='me-px'>
-          <Nav.Link to='/' as={NavLink}>
-            Menu
+          <Nav.Link to='/store/all' as={NavLink}>
+            Todos los productos
           </Nav.Link>
-          <Nav.Link to='/store' as={NavLink}>
-            Tienda
+          <Nav.Link to='/store/shirts' as={NavLink}>
+            Camisas
+          </Nav.Link>
+          <Nav.Link to='/store/pants' as={NavLink}>
+            Pantalones
+          </Nav.Link>
+          <Nav.Link to='/store/shorts' as={NavLink}>
+            Bermudas
+          </Nav.Link>
+          <Nav.Link to='/store/sweatpants' as={NavLink}>
+            Sudaderas
           </Nav.Link>
         </Nav>
-
-        <h1 className="title font-cursive">Avocado-e-Vestiti</h1>
 
         <div className='open-cart-button d-flex justify-content-space-between'>
           {cartQuantity > 0 && (

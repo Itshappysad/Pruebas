@@ -4,8 +4,8 @@ export function About() {
   return (
     <div>
       <h1 className="font-cursive">¿Quiénes somos?</h1>
-      <div className="container">
-        <div className="container-text">
+      <div className="about-container">
+        <div className="about-container-text">
           <h2>Nuestra misión</h2>
           <p>
             Nuestra misión es proporcionar soluciones tecnológicas innovadoras y de
@@ -36,7 +36,7 @@ export function About() {
             apasionados por la tecnología y la moda.
           </p>
         </div>
-        <div className="container-img">
+        <div className="about-container-img">
           <img
             src="imgs/AeVlogo.jpeg"
             alt="logo"
