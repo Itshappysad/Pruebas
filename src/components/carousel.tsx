@@ -44,7 +44,7 @@ const Carousel = ({ category }: { category: string }) => {
       <div className="snap-center shrink-0 first:pl-8 last:pr-8">
         {storeItems.map(item => (
           <div key={item.id} className="flex flex-col items-center items-align-center text-decoration">
-            <a className="text-decoration-none" href={"/product/".concat(item.id)}>
+            <a className="text-decoration-none text-black" href={"/product/".concat(item.id)}>
               <ProductImage id={item.id} name={item.name} />
               <h6>{item.name}</h6>
             </a>
