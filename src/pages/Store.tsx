@@ -29,6 +29,7 @@ export function Store() {
         <Row md={2} xs={1} lg={2} className='g-3'>
           {storeItems?.map(item => (
             <Col key={item.id}>
+              <div>aaaa {item.id}</div>
               <StoreItem product={item} />
             </Col>
           ))}

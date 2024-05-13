@@ -5,7 +5,7 @@ import StoreDialog from './StoreDialog';
 import { useEffect, useState } from 'react';
 import { getProductImage } from '../core/storage';
 
-type StoreItemProps = {
+export type StoreItemProps = {
   product: Product;
 };
 

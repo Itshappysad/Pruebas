@@ -72,6 +72,19 @@ export async function editUser({
   }
 }
 
+export async function getProduct(id: string): Promise<Product | null> {
+  try {
+    const productSnap = await getDoc(doc(database, "items", id));
+    if (!productSnap.exists()) return null;
+    return { id, ...productSnap.data() } as Product;
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      console.error(e);
+    }
+    return null;
+  }
+}
+
 export async function getProducts() {
   try {
     const productDocs = await getDocs(query(collection(database, "items")));
