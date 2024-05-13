@@ -1,7 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { getProducts, getProductsByCategory } from '../core/database';
 import { StoreItem } from '../components/StoreItem';
-import { toast } from 'sonner';
 import { type Product } from '../core/types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
