@@ -16,17 +16,8 @@ export function Product() {
   }, [id]);
 
   if (!product) {
-    return <div>Producto no encontrado [ id: {id} ]</div>;
+    return <div>Cargando Información de producto...</div>;
   }
-
-  // const item:ProdType = {
-  //   id: "1",
-  //   name: "asdasd",
-  //   price: 1234,
-  //   colors: ["blanco", "negro"],
-  //   sizes: ["grande", "pequeño"]
-  // }
-
   return (
     <>
       <StoreItem product={product}/>
