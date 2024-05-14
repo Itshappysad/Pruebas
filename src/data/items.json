@@ -5,8 +5,7 @@
     "price": 110999,
     "imgUrl": "/imgs/LExTeFIPrhB3JmFZLeyY.png",
     "colors": ["#ffc7c7", "#92c0ff", "#34ff67"],
-    "sizes": ["s", "m", "l", "xl"],
-    "categories": ["camisa", "novedades"]
+    "sizes": ["s", "m", "l", "xl"]
   },
   {
     "id": 2,

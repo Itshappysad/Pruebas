@@ -4,6 +4,8 @@ export type ResgisterUser = {
   password?: string | null;
   id: string;
   provider?: string | null;
+  address?: string | null;
+  postalcode?: number | null;
 };
 
 export type Product = {

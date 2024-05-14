@@ -1,39 +1,31 @@
 import { Button } from "../components/ui/button";
 import { useRef } from "react";
-import useProfilePicture from "../hooks/useProfilePicture";
 
-type Props = {
-  id: string;
-};
-
-const ProfilePictureButtons = ({ id }: Props) => {
+const ItemButton = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const { uploadProfilePicture } = useProfilePicture(id);
 
   return (
     <div>
-      <input
+      {/* <input
         className="hidden"
         type="file"
         accept="image/*"
-        onChange={uploadProfilePicture}
         id="imageUpload"
         ref={fileInputRef}
-      />
+      /> */}
       <label htmlFor="imageUpload">
         <Button
-          className="flex-none translate-y-52 translate-x-12 w-26 "
+          className="flex-none  translate-x-14 w-26 h-8 "
           type="button"
           onClick={() => {
             fileInputRef.current?.click();
           }}
         >
-          Cambiar foto
+          Subir foto
         </Button>
       </label>
     </div>
   );
 };
 
-export default ProfilePictureButtons;
+export default ItemButton;

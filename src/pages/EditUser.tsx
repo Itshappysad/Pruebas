@@ -23,6 +23,8 @@ function EditUser() {
     defaultValues: {
       name: user?.name,
       email: user?.email,
+      address: user?.address,
+      postalcode: user?.postalcode,
     },
   });
 
@@ -98,12 +100,12 @@ function EditUser() {
               <label className="font-bold py-2" htmlFor="postalcode">
                 Codigo Postal:
               </label>
-              <Input {...register("postalcode")} />
+              <Input {...register("postalcode", { valueAsNumber: true })} />
               <p className="font-extralight py-1">
                 Aqui puedes cambiar los datos sobre tu codigo postal
               </p>
             </div>
-            <div className="pt-36">
+            <div className="pt-20">
               <Button className="px-60" disabled={isSubmitting}>
                 Editar informacion
               </Button>

@@ -13,6 +13,7 @@ import { app } from "../../firebase.config";
 import { Product, ResgisterUser } from "./types";
 import { FirebaseError } from "firebase/app";
 import { EditUser } from "../schemas/edit";
+import { RegisterCompanyForm } from "../schemas/company";
 
 export const database = getFirestore(app);
 
@@ -36,6 +37,8 @@ export type User = {
   email: string;
   password?: string;
   provider?: string;
+  address?: string;
+  postalcode?: number;
 };
 
 export async function getUser(id: string): Promise<User | null> {
@@ -71,16 +74,22 @@ export async function editUser({
     return false;
   }
 }
-
-export async function getProduct(id: string): Promise<Product | null> {
+export async function getProductsByCategory(
+  category: string
+): Promise<Product[] | null> {
   try {
-    const productSnap = await getDoc(doc(database, "items", id));
-    if (!productSnap.exists()) return null;
-    return { id, ...productSnap.data() } as Product;
-  } catch (e) {
-    if (e instanceof FirebaseError) {
-      console.error(e);
-    }
+    const itemsRef = collection(database, "items");
+    const q = query(itemsRef, where("categories", "array-contains", category));
+    const querySnapshot = await getDocs(q);
+    const products: Product[] = [];
+
+    querySnapshot.forEach((doc) => {
+      products.push({ id: doc.id, ...doc.data() } as Product);
+    });
+
+    return products;
+  } catch (error) {
+    console.error("Error fetching products by category:", error);
     return null;
   }
 }
@@ -93,29 +102,7 @@ export async function getProducts() {
     );
     return productData;
   } catch (e) {
-    if (e instanceof FirebaseError) {
-      console.error(e);
-    }
     return null;
-  }
-}
-
-export async function getProductsByCategory(category: string): Promise<Product[] | null> {
-  try {
-    const itemsRef = collection(database, 'items')
-    const q = query(itemsRef, where('categories', 'array-contains', category))
-    const querySnapshot = await getDocs(q)
-    const products: Product[] = []
-    
-    querySnapshot.forEach((doc) => {
-      products.push({ id: doc.id, ...doc.data() } as Product)
-    })
-
-    return products
-
-  } catch (error) {
-    console.error('Error fetching products by category:', error)
-    return null
   }
 }
 
@@ -131,5 +118,25 @@ export async function getCartItems(ids: string[]) {
     return productData;
   } catch (error) {
     return null;
+  }
+}
+
+export async function createCompanyForUser({
+  userId,
+  companyData,
+}: {
+  userId: string;
+  companyData: RegisterCompanyForm;
+}) {
+  try {
+    const companyRef = doc(database, "companies");
+
+    await setDoc(companyRef, { ...companyData, userId });
+
+    console.log("Empresa creada exitosamente!");
+    return true;
+  } catch (error) {
+    console.error("Error al crear la empresa:", error);
+    return false;
   }
 }

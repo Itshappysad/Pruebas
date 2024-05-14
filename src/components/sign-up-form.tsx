@@ -68,7 +68,7 @@ function SignUpForm() {
           "
           disabled={isSubmitting}
         >
-          Crear cuenta
+          REGISTRARSE
         </button>
       </div>
     </form>

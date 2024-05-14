@@ -4,7 +4,7 @@ export const editUserSchema = z.object({
   name: z.string({ required_error: 'Campo requerido' }).min(1).optional(),
   email: z
     .string({ required_error: 'Campo requerido' })
-    .email('Ingresa un correo válido')
+    .email('Ingresa un correo valido')
     .min(1).optional(),
   address:z.string({ required_error: 'Campo requerido' }).min(1).optional() ,
   postalcode: z.number().int().positive().min(9999)

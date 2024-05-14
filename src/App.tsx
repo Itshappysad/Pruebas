@@ -1,24 +1,19 @@
 import { Container } from "react-bootstrap";
 import { Navbar } from "./components/Navbar";
-import Footer from "./components/Footer";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { Outlet } from "react-router-dom";
-import './App.css'
-
 
 function App() {
   return (
-    <>
+    <ShoppingCartProvider>
       <Navbar />
-      <ShoppingCartProvider>
-        <Container className="brd">
-          <Outlet />
-        </Container>
-      </ShoppingCartProvider>
-      <Footer />
-    </>
-
+      <Container className="brd">
+        <Outlet />
+      </Container>
+    </ShoppingCartProvider>
   );
 }
 
 export default App;
+
+/* https://www.youtube.com/watch?v=lATafp15HWA refference*/
