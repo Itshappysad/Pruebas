@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import { Navbar } from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { Outlet } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (

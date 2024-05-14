@@ -4,6 +4,7 @@ import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { Settings } from "../Settings";
 import { useModal } from "./hooks";
 import { useAuth } from "../../context/useAuth";
+import "./styles.css";
 
 export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart();
@@ -14,19 +15,17 @@ export function Navbar() {
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
-        <Nav className="me-px">
-          <Nav.Link to="/" as={NavLink}>
-            Home
-          </Nav.Link>
+        <a className="navbar-title-link" href="/">
+          <h1 className="navbar-title font-cursive font-bold text-5xl">
+            Avocado -e- Vestiti
+          </h1>
+        </a>
+
+        <Nav className="me-px font-semibold text-2xl ">
           <Nav.Link to="/store" as={NavLink}>
-            Tienda
-          </Nav.Link>
-          <Nav.Link to="/about" as={NavLink}>
-            Sobre nosotros
+            Productos
           </Nav.Link>
         </Nav>
-
-        <h1 className="text-center   font-extrabold	">Avocado-e-Vestiti</h1>
 
         <div className="d-flex justify-content-space-between ">
           {cartQuantity > 0 && (

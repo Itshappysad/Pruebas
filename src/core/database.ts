@@ -11,10 +11,11 @@ import {
   where,
 } from "firebase/firestore";
 import { app } from "../../firebase.config";
-import { Product, ResgisterUser } from "./types";
+import { Company, Product, ResgisterUser } from "./types";
 import { FirebaseError } from "firebase/app";
 import { EditUser } from "../schemas/edit";
 import { RegisterCompanyForm } from "../schemas/company";
+import { auth } from "./auth";
 
 export const database = getFirestore(app);
 
@@ -137,4 +138,22 @@ export async function createCompanyForUser({
     console.error("Error al crear la empresa:", error);
     return false;
   }
+}
+
+export async function getAccountBusiness() {
+  const user = auth.currentUser;
+
+  if (!user) {
+    return null;
+  }
+
+  const docs = await getDocs(
+    query(collection(database, "users", user.uid, "company"))
+  );
+
+  const [companyDoc] = docs.docs;
+
+  return docs.docs.length === 0
+    ? null
+    : ({ id: companyDoc.id, ...companyDoc.data() } as Company);
 }

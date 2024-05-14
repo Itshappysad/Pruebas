@@ -22,3 +22,15 @@ export type Subscription = {
   price: number;
   imgUrl: string;
 };
+
+export type Company = {
+  id: string;
+  name: string;
+  email: string;
+  address: string;
+  postalcode: number;
+  bankType: string;
+  bankAccount: string;
+  nit: string;
+  phone: string;
+};
