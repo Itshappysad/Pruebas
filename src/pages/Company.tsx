@@ -12,6 +12,7 @@ import {
 } from "../schemas/company";
 import CompanyPictureButtons from "../components/Companybutton";
 import { createCompanyForUser } from "../core/database";
+import { toast } from "sonner";
 
 export function Company() {
   const { user } = useAuth();
@@ -26,11 +27,11 @@ export function Company() {
     defaultValues: {
       name: "",
       nit: "",
-      Banktype: "",
+      bankType: "",
       bankAccount: "",
       email: "",
       phone: "",
-      address: user?.address,
+      address: user?.address ?? "",
       postalcode: user?.postalcode,
     },
   });
@@ -56,13 +57,14 @@ export function Company() {
       });
 
       if (success) {
-        console.log("Empresa creada exitosamente!");
+        toast.success("Empresa creada exitosamente!");
         // Redirigir a la página de éxito o a donde necesites después de crear la empresa
       } else {
         throw new Error("Error al crear la empresa");
       }
     } catch (error) {
-      console.error("Error al crear la empresa:", error);
+      toast.error("Error al crear la empresa");
+
       // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
     }
   };
@@ -112,8 +114,7 @@ export function Company() {
                     Tipo de banco:
                   </label>
                   <select
-                    name="Banktype"
-                    id="Banktype"
+                    {...register("bankType")}
                     className="border-1   border-gray-400 rounded-md w-full h-9 focus:border-blue-500 focus:border-4"
                   >
                     <option value="">Elegir...</option>

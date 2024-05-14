@@ -5,7 +5,6 @@ import Input from "../components/input";
 import { Button } from "../components/ui/button";
 import ItemPicture from "../components/ItemPic";
 import ItemButton from "../components/ItemPictureButton";
-import MultiSelect from "../components/Multiselect";
 /* import SelectDemo from "../components/Checkbox";*/
 
 function EditItem() {

@@ -3,7 +3,7 @@ import { z } from "zod";
 export const registerCompanyFormSchema = z.object({
   name: z.string().min(2),
   address: z.string().min(1),
-  Banktype: z.string().min(1),
+  bankType: z.string().min(1),
   bankAccount: z.string().min(10),
   nit: z
     .string()

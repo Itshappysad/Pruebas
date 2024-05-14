@@ -1,4 +1,5 @@
 import {
+  addDoc,
   collection,
   doc,
   documentId,
@@ -129,10 +130,7 @@ export async function createCompanyForUser({
   companyData: RegisterCompanyForm;
 }) {
   try {
-    const companyRef = doc(database, "companies");
-
-    await setDoc(companyRef, { ...companyData, userId });
-
+    await addDoc(collection(database, "users", userId, "company"), companyData);
     console.log("Empresa creada exitosamente!");
     return true;
   } catch (error) {
