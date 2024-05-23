@@ -31,7 +31,7 @@ export function Company() {
       bankAccount: "",
       email: "",
       phone: "",
-      address: user?.address ?? "",
+      address: user?.address,
       postalcode: user?.postalcode,
     },
   });
@@ -45,12 +45,9 @@ export function Company() {
   const onSubmit: SubmitHandler<RegisterCompanyForm> = async (data) => {
     console.log(data);
     try {
-      // Verificar si el usuario está autenticado
       if (!user) {
         throw new Error("Usuario no autenticado");
       }
-
-      // Llamar a la función para crear la empresa asociada al usuario actual
       const success = await createCompanyForUser({
         userId: user.id,
         companyData: data,
@@ -58,14 +55,11 @@ export function Company() {
 
       if (success) {
         toast.success("Empresa creada exitosamente!");
-        // Redirigir a la página de éxito o a donde necesites después de crear la empresa
       } else {
         throw new Error("Error al crear la empresa");
       }
     } catch (error) {
       toast.error("Error al crear la empresa");
-
-      // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
     }
   };
   return (

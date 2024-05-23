@@ -1,19 +1,12 @@
-import { Card, CardContent, CardTitle } from "./ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./ui/carousel";
 import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../core/database";
 import { Product } from "../core/types";
 import { getProductImage } from "../core/storage";
 
-const CarouselSize = ({ category }: { category: string }) => {
+const Carousel2 = ({ category }: { category: string }) => {
   const [storeItems, setStoreItems] = useState<Product[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -45,43 +38,27 @@ const CarouselSize = ({ category }: { category: string }) => {
       </div>
     );
   }
-  {
-    return (
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        className="w-full h-full"
-      >
-        <CarouselContent>
-          {Array.from({ length: 60 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="p-1">
-                <Card>
-                  <CardContent className=" aspect-square items-center justify-center p-6">
-                    {storeItems.map((item) => (
-                      <div key={item.id}>
-                        <a
-                          className="text-decoration-none text-black"
-                          href={"/product/".concat(item.id)}
-                        >
-                          <ProductImage id={item.id} name={item.name} />
-                          <CardTitle>{item.name}</CardTitle>
-                        </a>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    );
-  }
+
+  return (
+    <div className="carousel relative w-full flex gap-6 snap-mandatory overflow-x-auto pb-14 h-72 rounded-lg shadow-sm place-items-stretch">
+      <div className="snap-center shrink-0 first:pl-8 last:pr-8">
+        {storeItems.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col items-center items-align-center text-decoration"
+          >
+            <a
+              className="text-decoration-none text-black"
+              href={"/product/".concat(item.id)}
+            >
+              <ProductImage id={item.id} name={item.name} />
+              <h6>{item.name}</h6>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const ProductImage = ({ id, name }: { id: string; name: string }) => {
@@ -110,4 +87,5 @@ const ProductImage = ({ id, name }: { id: string; name: string }) => {
     <div>Loading...</div>
   );
 };
-export default CarouselSize;
+
+export default Carousel2;

@@ -69,6 +69,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 if (!user) {
                   navigate("/signUp");
                 }
+                navigate("/payment");
                 //TODO: Do the payment
               }}
               className="

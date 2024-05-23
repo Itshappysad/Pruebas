@@ -16,6 +16,7 @@ import { FirebaseError } from "firebase/app";
 import { EditUser } from "../schemas/edit";
 import { RegisterCompanyForm } from "../schemas/company";
 import { auth } from "./auth";
+import { RegisterProductForm } from "../schemas/product";
 
 export const database = getFirestore(app);
 
@@ -156,4 +157,42 @@ export async function getAccountBusiness() {
   return docs.docs.length === 0
     ? null
     : ({ id: companyDoc.id, ...companyDoc.data() } as Company);
+}
+
+
+export async function createProductForCompany({
+  userId,
+  companyId,
+  productData,
+}: {
+  userId: string;
+  companyId: string
+  productData: RegisterProductForm;
+}) {
+  try {
+    await addDoc(collection(database, "users", userId, "company", companyId, "product"), productData);
+    console.log("Producto creado exitosamente!");
+    return true;
+  } catch (error) {
+    console.error("Error al crear el producto:", error);
+    return false;
+  }
+}
+
+export async function getProduct() {
+  const user = auth.currentUser;
+
+  if (!user) {
+    return null;
+  }
+
+  const docs = await getDocs(
+    query(collection(database, "users", user.uid, "company", company.uid , "product"))
+  );
+
+  const [productDoc] = docs.docs;
+
+  return docs.docs.length === 0
+    ? null
+    : ({ id: productDoc.id, ...productDoc.data() } as Product);
 }

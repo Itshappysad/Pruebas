@@ -16,6 +16,7 @@ import { Toaster } from "sonner";
 import { Company } from "./pages/Company.tsx";
 import EditItem from "./pages/EditItem.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Payment from "./pages/Payment.tsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/EditItem",
         element: <EditItem />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
   },
