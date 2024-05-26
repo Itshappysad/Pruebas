@@ -50,7 +50,6 @@ function EditUser() {
     <div className="h-full ">
       <div className="px-10">
         <h2 className="font-bold">Mi perfil</h2>
-        <p>Aqui puedes editar toda la informacion sobre ti y tu perfil</p>
       </div>
       <form
         className="px-10 flex flex-col gap-1"
@@ -59,11 +58,10 @@ function EditUser() {
         <div className="flex gap-6">
           <div className="flex-col">
             {user && (
-              <>
+              <div className="flex-auto flex-col items-center">
                 <ProfilePicture id={user.id} />
                 <ProfilePictureButtons id={user.id} />
-                {/* Te lo juro que si hay un ID */}
-              </>
+              </div>
             )}
           </div>
 
@@ -107,7 +105,7 @@ function EditUser() {
             </div>
             <div className="pt-20">
               <Button className="px-60" disabled={isSubmitting}>
-                Editar informacion
+                Guardar
               </Button>
             </div>
           </div>

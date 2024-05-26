@@ -1,8 +1,7 @@
 const Banner = () => {
   return (
     <div className="container relative">
-      {/* TODO: apuntar link a producto con descuento */}
-      <a href="" className="text-decoration-line: none">
+      <a href="/product/LExTeFIPrhB3JmFZLeyY" className="text-decoration-line: none">
         <img
           className="grid__item-image saturate-50 js-grid__item-image grid__item-image-lazy js-lazy grid__item-trigger image-loaded relative w-full  h-full  object-cover shadow-sm  place-items-stretch rounded "
           loading="lazy"
@@ -14,7 +13,7 @@ const Banner = () => {
           data-sizes="975px"
         />
         <p className="text-white tracking-tighter	 skew-y-3 shadow-xl  absolute translate-x-80 top-10 text-center font-extralight text-7xl">
-          Editalo A Tu Gusto
+        50% off
         </p>
       </a>
     </div>

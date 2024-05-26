@@ -28,7 +28,7 @@ function EditItem() {
   return (
     <div className="h-full ">
       <div className="px-10 text-center">
-        <h2 className="font-bold ">Añadir Items como empresa</h2>
+        <h2 className="font-bold">Añadir Items como empresa</h2>
         <p>Aqui tu puedes crear items en la tienda</p>
       </div>
       {!data ? (

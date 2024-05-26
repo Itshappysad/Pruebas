@@ -20,7 +20,6 @@ function SignUpForm() {
     <form
       onSubmit={handleSubmit(async ({ email, password, name }) => {
         const user = await createUserWithEmail(email, password);
-        console.log("entro");
         if (!user) return;
         const res = await registerUser({
           id: user.uid,

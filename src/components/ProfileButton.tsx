@@ -12,16 +12,17 @@ const ProfilePictureButtons = ({ id }: Props) => {
   const { uploadProfilePicture } = useProfilePicture(id);
 
   return (
-    <div>
+    <>
       <input
-        className="hidden"
-        type="file"
-        accept="image/*"
-        onChange={uploadProfilePicture}
-        id="imageUpload"
-        ref={fileInputRef}
-      />
+          className="hidden"
+          type="file"
+          accept="image/*"
+          onChange={uploadProfilePicture}
+          id="imageUpload"
+          ref={fileInputRef}
+        />
       <label htmlFor="imageUpload">
+
         <Button
           className="flex-none translate-y-52 translate-x-12 w-26 "
           type="button"
@@ -29,10 +30,10 @@ const ProfilePictureButtons = ({ id }: Props) => {
             fileInputRef.current?.click();
           }}
         >
-          Cambiar foto
+          Actualizar imagen de perfil
         </Button>
       </label>
-    </div>
+    </>
   );
 };
 
