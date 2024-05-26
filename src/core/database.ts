@@ -11,10 +11,10 @@ import {
   where,
 } from "firebase/firestore";
 import { app } from "../../firebase.config";
-import { Company, Product, ResgisterUser } from "./types";
+import { User, Company, Product, ResgisterUser } from "./types";
 import { FirebaseError } from "firebase/app";
 import { EditUser } from "../schemas/edit";
-import { RegisterCompanyForm } from "../schemas/company";
+import { companyType } from "../schemas/company";
 import { auth } from "./auth";
 import { RegisterProductForm } from "../schemas/product";
 
@@ -33,16 +33,6 @@ export async function registerUser({ id, ...userInfo }: ResgisterUser) {
     return false;
   }
 }
-
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-  password?: string;
-  provider?: string;
-  address?: string;
-  postalcode?: number;
-};
 
 export async function getUser(id: string): Promise<User | null> {
   try {
@@ -77,6 +67,54 @@ export async function editUser({
     return false;
   }
 }
+
+export async function getCompany(id: string): Promise<Company | null> {
+  try {
+    const companyDbDoc = await getDoc(doc(database, "companies", id))
+
+    if (!companyDbDoc.exists())
+      return null;
+    const company:Company = companyDbDoc.data() as Company
+    return company
+  
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      console.error(e);
+    }
+    return null;
+  }
+}
+
+// in case of needing to split ids from users and companies.
+// export async function getCompanyByUser(userid: string): Promise<Company | null> {
+//     const companyQuery = query(collection(database, "companies"), where("userid", "==", userid));
+//     const dbResult = await getDocs(companyQuery);
+//         if (dbResult.empty) {
+//       return null
+//     }
+//     const companyDoc = dbResult.docs[0];
+//     const company = companyDoc.data() as Company;
+//     company.id = companyDoc.id
+
+//     return company; 
+// }
+
+export async function editCompany({
+  id,
+  companyData,
+}: {
+  id: string;
+  companyData: companyType;
+}) {
+  try {
+    await setDoc(doc(database, "companies", id), companyData, { merge: true });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+
 export async function getProductsByCategory(
   category: string
 ): Promise<Product[] | null> {
@@ -124,22 +162,6 @@ export async function getCartItems(ids: string[]) {
   }
 }
 
-export async function createCompanyForUser({
-  userId,
-  companyData,
-}: {
-  userId: string;
-  companyData: RegisterCompanyForm;
-}) {
-  try {
-    await addDoc(collection(database, "users", userId, "company"), companyData);
-    console.log("Empresa creada exitosamente!");
-    return true;
-  } catch (error) {
-    console.error("Error al crear la empresa:", error);
-    return false;
-  }
-}
 
 export async function getAccountBusiness() {
   const user = auth.currentUser;

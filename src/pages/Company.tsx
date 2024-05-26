@@ -6,33 +6,31 @@ import Input from "../components/input";
 import CompanyPicture from "../components/CompanyPic";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  RegisterCompanyForm,
-  registerCompanyFormSchema,
-} from "../schemas/company";
+import { type companyTypeForm, companyObjectForm } from "../schemas/company";
 import CompanyPictureButtons from "../components/Companybutton";
-import { createCompanyForUser } from "../core/database";
+import { getCompany, editCompany } from "../core/database";
+import { Company as CompanyDBType } from "../core/types";
 import { toast } from "sonner";
 
 export function Company() {
-  const { user } = useAuth();
+  const { user, company } = useAuth();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<RegisterCompanyForm>({
-    resolver: zodResolver(registerCompanyFormSchema),
+  } = useForm<companyTypeForm>({
+    resolver: zodResolver(companyObjectForm),
     defaultValues: {
-      name: "",
-      nit: "",
-      bankType: "",
-      bankAccount: "",
-      email: "",
-      phone: "",
-      address: user?.address,
-      postalcode: user?.postalcode,
+      name: company?.name || "",
+      nit: company?.nit || "",
+      bankType: company?.bankType || "",
+      bankAccount: company?.bankAccount || "",
+      email: company?.email || "",
+      phone: company?.phone || "",
+      address: company?.address || "",
+      postalcode: company?.postalcode,
     },
   });
 
@@ -42,33 +40,49 @@ export function Company() {
     }
   }, [user, navigate]);
 
-  const onSubmit: SubmitHandler<RegisterCompanyForm> = async (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<companyTypeForm> = async (data) => {
     try {
       if (!user) {
         throw new Error("Usuario no autenticado");
       }
-      const success = await createCompanyForUser({
-        userId: user.id,
-        companyData: data,
+
+      const companyData = {
+        name: data.name,
+        nit: data.nit,
+        bankType: data.bankType,
+        bankAccount: data.bankAccount,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        postalcode: data.postalcode
+      }
+
+
+      const success = await editCompany({
+        id: user.id,
+        companyData: companyData,
       });
+      
 
       if (success) {
-        toast.success("Empresa creada exitosamente!");
+        toast.success("Empresa guardada exitosamente!");
       } else {
-        throw new Error("Error al crear la empresa");
+        throw new Error("Error al guardar la empresa");
       }
     } catch (error) {
-      toast.error("Error al crear la empresa");
+      console.error(error);
+      toast.error("Error al guardar la empresa");
     }
-  };
+  }
+
   return (
     <div className="h-full ">
       <div className="px-10 text-center">
-        <h2 className="font-bold ">Crea tu empresa</h2>
+        <h2 className="font-bold ">Empresa</h2>
         <p>
-          Aqui tu puedes crear tu propia empresa para poder crear items en la
-          tienda
+          Aquí puedes manejar la información de tu empresa.
+          <br />
+          Se necesita para poder crear items en la tienda.
         </p>
       </div>
       <form
@@ -90,7 +104,7 @@ export function Company() {
                   </label>
                   <Input {...register("name")} />
                   <p className="font-extralight py-1">
-                    Aqui puedes cambiar todos los datos sobre tu nombre y como
+                    Aquí puedes cambiar todos los datos sobre tu nombre y como
                     se muestra a la pagina
                   </p>
                 </div>
@@ -100,7 +114,7 @@ export function Company() {
                   </label>
                   <Input {...register("nit")} className="w-54" />
                   <p className="font-extralight py-1">
-                    Aqui puedes cambiar los datos sobre tu numero de identidad
+                    Aquí puedes cambiar los datos sobre tu número de identidad
                   </p>
                 </div>
                 <div className=" ">
@@ -123,20 +137,20 @@ export function Company() {
                 </div>
                 <div className="px-4 ">
                   <label className="font-bold py-2 " htmlFor="bankAccount">
-                    Numero de Cuenta Bancaria:
+                    Número de Cuenta Bancaria:
                   </label>
                   <Input {...register("bankAccount")} className="w-38 " />
                 </div>
 
                 <div>
                   <label className="font-bold py-2 " htmlFor="address">
-                    Direccion:
+                    Dirección:
                   </label>
                   <Input {...register("address")} />
                 </div>
                 <div className="px-4">
                   <label className="font-bold py-2 " htmlFor="postalcode">
-                    Codigo Postal:
+                    Código Postal:
                   </label>
                   <Input
                     {...register("postalcode", { valueAsNumber: true })}
@@ -145,26 +159,26 @@ export function Company() {
                 </div>
                 <div>
                   <label className="font-bold py-2" htmlFor="email">
-                    Gmail:
+                    Email:
                   </label>
                   <Input {...register("email")} />
                   <p className="font-extralight py-1">
-                    Aqui puedes cambiar los datos sobre tu correo electronico
+                    Aquí puedes cambiar los datos sobre tu correo electrónico
                   </p>
                 </div>
                 <div className="px-4">
                   <label className="font-bold py-2" htmlFor="phone">
-                    Telefono:
+                    Teléfono:
                   </label>
                   <Input {...register("phone")} className="w-38" />
                   <p className="font-extralight py-1">
-                    Aqui puedes cambiar los datos sobre tu numero telefonico
+                    Aquí puedes cambiar los datos sobre tu número telefónico
                   </p>
                 </div>
               </div>
               <div className="py-4">
                 <Button disabled={isSubmitting} className="px-60">
-                  Subir informacion
+                  Guardar
                 </Button>
               </div>
             </div>

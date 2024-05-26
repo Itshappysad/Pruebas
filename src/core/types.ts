@@ -1,3 +1,13 @@
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  provider?: string;
+  address?: string;
+  postalcode?: number;
+};
+
 export type ResgisterUser = {
   name: string;
   email: string;
@@ -24,7 +34,6 @@ export type Subscription = {
 };
 
 export type Company = {
-  id: string;
   name: string;
   email: string;
   address: string;
