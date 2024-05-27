@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../core/database";
 import { CompanyItem } from "../core/types";
 import { StoreItem } from '../components/StoreItem';
+import "./carousel.css"
 
 const CarouselSize = ({ category }: { category: string }) => {
   const [storeItems, setStoreItems] = useState<CompanyItem[] | null>(null);
@@ -50,13 +51,11 @@ const CarouselSize = ({ category }: { category: string }) => {
           align: "start",
           loop: true,
         }}
-        className="w-full h-full"
+        className="carousel"
       >
         <CarouselContent>
         {storeItems.map((item) => (
-          <div>
-              <StoreItem product={item} />
-          </div>
+          <StoreItem product={item} />
         ))}
         </CarouselContent>
         <CarouselPrevious />

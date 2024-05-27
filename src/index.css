@@ -5,3 +5,7 @@
 #root {
   background-color: rgb(255, 255, 255);
 }
+
+.font-karla {
+  font-family: "Karla", sans-serif;
+}
