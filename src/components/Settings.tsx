@@ -53,7 +53,7 @@ export function Settings({ isOpen, handleClose }: SettingsProps) {
                       d="M9.243 18.997H21v2H3v-4.243l9.9-9.9l4.242 4.243zm5.07-13.557l2.122-2.121a1 1 0 0 1 1.414 0l2.829 2.828a1 1 0 0 1 0 1.415l-2.122 2.121z"
                     />
                   </svg>
-                  Editar
+                  Información del usuario
                 </Link>
               </Button>
               <Button
@@ -81,7 +81,7 @@ export function Settings({ isOpen, handleClose }: SettingsProps) {
                       <path d="M22,21H21V2a1,1,0,0,0-1-1H4A1,1,0,0,0,3,2V21H2a1,1,0,0,0,0,2H22A1,1,0,0,0,22,21ZM10,21V19h4v2Zm6,0V18a1,1,0,0,0-1-1H9a1,1,0,0,0-1,1v3H5V3H19V21Z" />
                     </g>
                   </svg>{" "}
-                  Empresa
+                  Información de la Empresa
                 </Link>
               </Button>
               <Button
@@ -104,7 +104,7 @@ export function Settings({ isOpen, handleClose }: SettingsProps) {
                       <path d="M12.286,9.71a.5.5,0,0,0,.4-.007L21.55,5.674a.5.5,0,0,0-.008-.914L18.449,3.415a.5.5,0,0,0-.41,0L9.2,7.518a.5.5,0,0,0,.018.915Z" />
                     </g>
                   </svg>{" "}
-                  Añadir items
+                  Administrar Productos
                 </Link>
               </Button>
               <Button

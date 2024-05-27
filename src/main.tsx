@@ -21,6 +21,7 @@ import EditItem from "./pages/EditItem.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Payment from "./pages/Payment.tsx";
 import CompanyItemsManager from "./pages/items/index.tsx";
+import AddCompanyItem from "./pages/addItem/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/company-items",
         element: <CompanyItemsManager />,
+      },
+      {
+        path: "/company-item/new",
+        element: <AddCompanyItem />,
       },
     ],
   },
