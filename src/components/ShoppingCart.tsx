@@ -26,9 +26,9 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
     run();
   }, [cartItems, setItems]);
 
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log(items);
+  // }, [items]);
 
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">

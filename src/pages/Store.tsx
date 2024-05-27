@@ -1,4 +1,3 @@
-import { Col, Row } from 'react-bootstrap';
 import { getProducts, getProductsByCategory } from '../core/database';
 import { StoreItem } from '../components/StoreItem';
 import { type CompanyItem } from '../core/types';
@@ -24,7 +23,6 @@ export function Store() {
           return;
         }
         
-        console.log(products)
         setStoreItems(products);
       } catch (error) {
         console.error('No se encontraron productos en la categoría:', category, error);
@@ -47,11 +45,9 @@ export function Store() {
 
   return (
     <>
-      <div className="store-items-container flex items-center justify-center h-screen">
+      <div className="store-items-container">
           {storeItems?.map(item => (
-            <Col>
               <StoreItem product={item} />
-            </Col>
           ))}
       </div>
     </>

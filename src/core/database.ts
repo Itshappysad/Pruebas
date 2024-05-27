@@ -164,7 +164,6 @@ export async function getCartItems(ids: string[]) {
     const productData = productDocs.docs.map(
       (d) => ({ id: d.id, ...d.data() } as Product)
     );
-    console.log(productData);
     return productData;
   } catch (error) {
     return null;

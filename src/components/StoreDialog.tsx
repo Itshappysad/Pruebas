@@ -21,8 +21,6 @@ function StoreDialog({
   } = useShoppingCart();
   const quantity = getItemQuantity(name);
 
-  console.log(availability)
-
   return (
     <Dialog {...props}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -40,7 +38,7 @@ function StoreDialog({
             <strong className="text-xl">Tallas: </strong>
             <div className="flex gap-3">
               {availability.size.map((size) => (
-                <button
+                <button key={"btn1".concat(name)}
                   className="p-1 bg-black w-20 text-white rounded-md shadow-sm hover:scale-125 ease-in-out duration-700 "
                 >
                   {size.toUpperCase()}
@@ -52,9 +50,8 @@ function StoreDialog({
             <strong className="text-xl">Colores: </strong>
             <div className="flex gap-3">
               {availability.color.map((c, i) => (
-                <button
+                <button key={"btn2".concat(name)}
                   className="p-1 bg-neutral-700 rounded-md shadow-sm hover:scale-125 ease-in-out duration-700"
-                  key={i}
                 >
                   <div
                     className="size-10 rounded-sm"

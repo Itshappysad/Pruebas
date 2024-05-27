@@ -1,8 +1,6 @@
-.store{
-  padding: 1rem 5rem;
-}
+.store-items-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 
-.store .title{
-  text-align: center;
-  font-size: 44px;
 }

@@ -38,7 +38,6 @@ function AddItemForm() {
   const categoryOptions = ["Camisa, Pantalon,"];
 
   const onSubmit: SubmitHandler<RegisterProductForm> = async (data) => {
-    console.log(data);
     try {
       if (!user) {
         throw new Error("Usuario no autenticado");
