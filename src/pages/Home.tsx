@@ -14,7 +14,6 @@ export function Home() {
         <h3 className="font-karla text-center">Lo más vendido</h3>
         <CarouselSize category={"best-seller"} />
       </div>
-      <Footer />
     </>
   );
 }

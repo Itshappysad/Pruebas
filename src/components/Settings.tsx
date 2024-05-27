@@ -89,7 +89,7 @@ export function Settings({ isOpen, handleClose }: SettingsProps) {
                 asChild
                 variant="outline"
               >
-                <Link to="/edititem">
+                <Link to="/items">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="1em"

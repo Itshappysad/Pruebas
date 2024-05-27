@@ -43,3 +43,14 @@ export type Company = {
   nit: string;
   phone: string;
 };
+
+export type CompanyItem = {
+  name: string;
+  price: number;
+  imageUrl: string;
+  categories: string[];
+  availability: {
+    color: string[];
+    size: string[];
+  }
+};

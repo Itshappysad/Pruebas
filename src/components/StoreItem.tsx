@@ -1,31 +1,28 @@
 import { Card } from 'react-bootstrap';
 import { formatCurrency } from '../utilities/formatCurrency';
-import { Product } from '../core/types';
+import { CompanyItem } from '../core/types';
 import StoreDialog from './StoreDialog';
 import { useEffect, useState } from 'react';
-import { getProductImage } from '../core/storage';
 
 type StoreItemProps = {
-  product: Product;
+  product: CompanyItem;
 };
 
 export function StoreItem({ product }: StoreItemProps) {
-  const { name, price, id } = product;
+  const { name, price, imageUrl } = product;
 
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
     const run = async () => {
-      const img = await getProductImage(id);
-
-      setImage(img);
+      setImage(imageUrl);
     };
 
     run();
   }, []);
 
   return (
-    <StoreDialog product={product} img={image ?? undefined}>
+    <StoreDialog product={product} img={imageUrl ?? undefined}>
       <Card>
         <Card.Img
           variant='top'

@@ -62,6 +62,15 @@ export function Company() {
         id: user.id,
         companyData: companyData,
       });
+
+      const companyItems = await getItems({
+        id: user.id
+      });
+
+      if (companyItems === null) {
+        const emptyItemList = []
+        
+      }
       
 
       if (success) {

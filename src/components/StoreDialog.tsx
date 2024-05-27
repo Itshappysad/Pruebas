@@ -1,17 +1,16 @@
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import type { Product } from "../core/types";
+import type { CompanyItem } from "../core/types";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 
 type Props = React.ComponentPropsWithRef<typeof Dialog> & {
-  product: Product;
+  product: CompanyItem;
   img?: string;
 };
 
 function StoreDialog({
   children,
-  product: { name, sizes, colors, id },
-  img,
+  product: { name, availability, imageUrl },
   ...props
 }: Props) {
   const {
@@ -20,7 +19,9 @@ function StoreDialog({
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
-  const quantity = getItemQuantity(id);
+  const quantity = getItemQuantity(name);
+
+  console.log(availability)
 
   return (
     <Dialog {...props}>
@@ -29,7 +30,7 @@ function StoreDialog({
         <div className="p-4 flex flex-col items-center justify-center gap-3">
           <img
             className="aspect-square h-96 object-cover"
-            src={img}
+            src={imageUrl}
             alt={name}
           />
           <h1 className="text-4xl">{name}</h1>
@@ -38,12 +39,11 @@ function StoreDialog({
           <div className="flex gap-2 justify-center items-center">
             <strong className="text-xl">Tallas: </strong>
             <div className="flex gap-3">
-              {sizes.map((s, i) => (
+              {availability.size.map((size) => (
                 <button
                   className="p-1 bg-black w-20 text-white rounded-md shadow-sm hover:scale-125 ease-in-out duration-700 "
-                  key={i}
                 >
-                  {s.toUpperCase()}
+                  {size.toUpperCase()}
                 </button>
               ))}
             </div>
@@ -51,7 +51,7 @@ function StoreDialog({
           <div className="flex gap-2 justify-center items-center">
             <strong className="text-xl">Colores: </strong>
             <div className="flex gap-3">
-              {colors.map((c, i) => (
+              {availability.color.map((c, i) => (
                 <button
                   className="p-1 bg-neutral-700 rounded-md shadow-sm hover:scale-125 ease-in-out duration-700"
                   key={i}

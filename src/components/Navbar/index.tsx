@@ -22,16 +22,16 @@ export function Navbar() {
         </a>
 
         <Nav className="me-px font-semibold text-2xl ">
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store/all" as={NavLink}>
           Todos los productos
           </Nav.Link>
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store/shirt" as={NavLink}>
           Camisas
           </Nav.Link>
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store/pant" as={NavLink}>
           Pantalones
           </Nav.Link>
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store/accessory" as={NavLink}>
           Accesorios
           </Nav.Link>
         </Nav>

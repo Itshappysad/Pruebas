@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div className="container relative">
-      <a href="/product/LExTeFIPrhB3JmFZLeyY" className="text-decoration-line: none">
+      <a href="/store/50off" className="text-decoration-line: none">
         <img
           className="grid__item-image saturate-50 js-grid__item-image grid__item-image-lazy js-lazy grid__item-trigger image-loaded relative w-full  h-full  object-cover shadow-sm  place-items-stretch rounded "
           loading="lazy"
