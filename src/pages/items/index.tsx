@@ -1,11 +1,13 @@
 // ItemsList.tsx
 import React, { useEffect, useState } from 'react';
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from "../../../firebase.config";
 import { ItemDocument, ItemData } from './types';
 import './styles.css';
+import { useAuth } from '../../context/useAuth';
 
 const CompanyItemsManager: React.FC = () => {
+  const { user, company } = useAuth();
   const [items, setItems] = useState<ItemDocument[]>([])
   const [loading, setLoading] = useState(true)
   const [newItem, setNewItem] = useState<ItemData>({
@@ -84,7 +86,35 @@ const CompanyItemsManager: React.FC = () => {
   // };
 
   const deleteItem = async (itemIndex: number) => {
-    console.log('I will delete the item:',itemIndex)
+    console.log("I will delete the item: "+itemIndex+" from company: "+ company?.name)
+
+
+    try {
+      const companyItemsDocument = doc(db, 'items', user?.id)
+      const docSnap = await getDoc(companyItemsDocument)
+  
+      if (docSnap.exists()) {
+        const documentData = docSnap.data()
+        
+        if (documentData.data && Array.isArray(documentData.data) && itemIndex >= 0 && itemIndex < documentData.data.length) {
+          const updatedDataArray = [...documentData.data];
+          updatedDataArray.splice(itemIndex, 1);
+  
+          // Update the document with the modified data array
+          await updateDoc(companyItemsDocument, { data: updatedDataArray });
+          console.log('Element deleted successfully');
+          window.location.reload();
+        } else {
+          console.log('Invalid position or data array does not exist');
+        }
+      } else {
+        console.log('Document does not exist');
+      }
+    } catch (error) {
+      console.error('Error deleting element:', error);
+    }
+
+
     // try {
     //   const itemDoc = doc(db, 'items', docId);
     //   const currentItem = items.find(item => item.id === docId);
