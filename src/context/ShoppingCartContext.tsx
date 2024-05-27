@@ -1,6 +1,4 @@
-import { createContext, useState, ReactNode, FC } from 'react';
-//import { useLocalStorage } from '../hooks/useLocalStorage';
-
+import { createContext, useState, useEffect, ReactNode, FC } from 'react';
 
 interface CartItem {
   companyId: string;
@@ -11,24 +9,28 @@ interface CartItem {
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (
-    companyId: string,
-    productIdx: number,
-    size: string,
-    color: string) => void;
+  addToCart: (companyId: string, productIdx: number, size: string, color: string) => void;
   removeFromCart: (index: number) => void;
 }
 
-const ShoppingCartContext = createContext<CartContextType | undefined>(undefined)
+const ShoppingCartContext = createContext<CartContextType | undefined>(undefined);
 
 const ShoppingCartProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('shoppingCart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (companyId: string, productIdx: number, size: string, color: string) => {
     setCart(prevCart => [
       ...prevCart,
       { companyId, productIdx, size, color }
     ]);
+    alert('El producto se añadió al carrito.');
   };
 
   const removeFromCart = (index: number) => {
