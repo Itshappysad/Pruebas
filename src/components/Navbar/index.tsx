@@ -1,8 +1,6 @@
-import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../context/ShoppingCartContext";
-import { Settings } from "../Settings";
-import { useAuth } from "../../context/useAuth";
 import "./styles.css";
 import { useContext } from "react";
 import cartImg from '../../assets/cart.jpeg';
@@ -15,9 +13,6 @@ export function Navbar() {
   }
   const { cart } = cartContext;
 
-  const { user } = useAuth();
-  const navigate = useNavigate();
-
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
@@ -26,7 +21,6 @@ export function Navbar() {
             Avocado -e- Vestiti
           </h1>
         </a>
-
         <Nav className="me-px font-semibold text-2xl ">
           <Nav.Link to="/store/all" as={NavLink}>
           Todos los productos
@@ -47,7 +41,6 @@ export function Navbar() {
             </div>
           </Nav.Link>
         </Nav>
-
       </Container>
     </NavbarBs>
   );
