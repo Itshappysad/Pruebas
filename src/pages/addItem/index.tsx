@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from "../../../firebase.config";
 import { useAuth } from '../../context/useAuth';
-
 
 const colorsList = [
   "aqua",
@@ -45,15 +44,14 @@ const AddCompanyItem = () => {
       if (docSnap.exists()) {
         setItems(docSnap.data().data);
       } else {
-        console.log('Document does not exist');
+        console.log('La empresa no existe');
       }
     };
 
     fetchItems();
   }, [documentId]);
 
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newItem = {
       name,
@@ -71,7 +69,7 @@ const AddCompanyItem = () => {
       await updateDoc(docRef, {
         data: arrayUnion(newItem)
       });
-      alert('Item added successfully');
+      alert('El producto agregado.');
       // Clear the form
       setName('');
       setImageUrl('');
@@ -91,8 +89,8 @@ const AddCompanyItem = () => {
   };
 
   const handleCategoryChange = (category) => {
-    selectedCategories((prevCategories) => 
-      prevCategories.includes(color) 
+    setSelectedCategories((prevCategories) => 
+      prevCategories.includes(category) 
         ? prevCategories.filter((c) => c !== category) 
         : [...prevCategories, category]
     );
@@ -115,84 +113,86 @@ const AddCompanyItem = () => {
   };
 
   return (
-    <div>
-      <h2>Empresa: {company?.name}</h2>
-      <h2>Agregar nuevo producto</h2>
+    <div className="container mt-4">
+      <h2 className="mb-4">Empresa: {company?.name}</h2>
+      <h2 className="mb-4">Agregar nuevo producto</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre</label>
+        <div className="mb-3">
+          <h3 className="form-label">Nombre</h3>
           <input
             type="text"
+            className="form-control"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>URL de la imagen</label>
+        <div className="mb-3">
+          <h3 className="form-label">URL de la imagen</h3>
           <input
             type="text"
+            className="form-control"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Precio</label>
+        <div className="mb-3">
+          <h3 className="form-label">Precio</h3>
           <input
             type="number"
+            className="form-control"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Categorías</label>
+        <div className="mb-3">
+          <h3 className="form-label">Categorías</h3>
           {categoriesList.map((category) => (
-            <div key={category}>
+            <div key={category} className="form-check">
               <input
                 type="checkbox"
                 checked={selectedCategories.includes(category)}
                 onChange={() => handleCategoryChange(category)}
               />
-              <label>{category}</label>
+              <label className="form-check-label">{category}</label>
             </div>
           ))}
         </div>
-        <div>
-          <label>Colores disponibles</label>
+        <div className="mb-3">
+          <h3 className="form-label">Colores disponibles</h3>
           {colorsList.map((color) => (
-            <div key={color}>
+            <div key={color} className="form-check">
               <input
                 type="checkbox"
                 checked={selectedColors.includes(color)}
                 onChange={() => handleColorChange(color)}
               />
-              <label>{color}</label>
+              <label className="form-check-label">{color}</label>
             </div>
           ))}
         </div>
-        <div>
-          <label>Tallas disponibles</label>
+        <div className="mb-3">
+          <h3 className="form-label">Tallas disponibles</h3>
           {sizesList.map((size) => (
-            <div key={size}>
+            <div key={size} className="form-check flex">
               <input
                 type="checkbox"
                 checked={selectedSizes.includes(size)}
                 onChange={() => handleSizeChange(size)}
               />
-              <label>{size}</label>
+              <label className="form-check-label">{size}</label>
             </div>
           ))}
         </div>
-        <button className="btn btn-success" type="submit">Publicar producto</button>
+        <div className='grid gap-4 grid-cols-2'>
+          <a className='btn btn-secondary' href="/company-items">Regresar a Administrar Productos</a>
+          <button className="btn btn-success" type="submit">Publicar producto</button>
+        </div>
       </form>
     </div>
   );
 };
 
 export default AddCompanyItem;
-function setItems(data: any) {
-  throw new Error('Function not implemented.');
-}
-
