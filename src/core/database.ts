@@ -129,9 +129,11 @@ export async function getProductsByCategory(category: string): Promise<CompanyIt
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       if (data && Array.isArray(data.data)) {
-        data.data.forEach((item: any) => {
+        data.data.forEach((item: any, index) => {
           if (item.categories && item.categories.includes(category)) {
             products.push({
+              companyId: doc.id,
+              productIdx: index,
               name: item.name,
               price: parseInt(item.price, 10), // Ensure price is converted to a number
               imageUrl: item.imageUrl,
@@ -222,7 +224,9 @@ export async function getCompanyItems(id: string): Promise<CompanyItem[] | null>
     
     const data = snap.data();
     if (data && Array.isArray(data.data)) {
-      return data.data.map((item: any) => ({
+      return data.data.map((item: any,index) => ({
+        companyId:id,
+        productIdx: index,
         name: item.name,
         price: parseInt(item.price, 10),
         imageUrl: item.imageUrl,

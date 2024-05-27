@@ -3,8 +3,11 @@ import { createContext, useState, useEffect, ReactNode, FC } from 'react';
 interface CartItem {
   companyId: string;
   productIdx: number;
+  name: string;
   size: string;
   color: string;
+  price: number;
+  imageUrl: string;
 }
 
 interface CartContextType {
@@ -25,10 +28,10 @@ const ShoppingCartProvider: FC<{ children: ReactNode }> = ({ children }) => {
     localStorage.setItem('shoppingCart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (companyId: string, productIdx: number, size: string, color: string) => {
+  const addToCart = (companyId: string, productIdx: number, name: string, size: string, color: string, price: number, imageUrl: string) => {
     setCart(prevCart => [
       ...prevCart,
-      { companyId, productIdx, size, color }
+      { companyId, productIdx, name, size, color, price, imageUrl }
     ]);
     alert('El producto se añadió al carrito.');
   };

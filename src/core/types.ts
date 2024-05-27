@@ -45,6 +45,8 @@ export type Company = {
 };
 
 export type CompanyItem = {
+  companyId: string;
+  productIdx: number;
   name: string;
   price: number;
   imageUrl: string;

@@ -11,7 +11,7 @@ type Props = React.ComponentPropsWithRef<typeof Dialog> & {
 
 function StoreDialog({
   children,
-  product: { name, availability, imageUrl },
+  product: { companyId, productIdx, name, availability, imageUrl, price },
   ...props
 }: Props) {
   const cartContext = useContext(ShoppingCartContext);
@@ -102,7 +102,7 @@ function StoreDialog({
           <Button
             className="border border-black rounded-md"
             variant="outline"
-            onClick={() => addToCart("azxazx", 1, selectedSize, selectedColor)}>
+            onClick={() => addToCart(companyId, productIdx, name, selectedSize, selectedColor, price, imageUrl)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
