@@ -102,7 +102,7 @@ const CompanyItemsManager: React.FC = () => {
   
           // Update the document with the modified data array
           await updateDoc(companyItemsDocument, { data: updatedDataArray });
-          console.log('Element deleted successfully');
+          console.log('Company item deleted successfully');
           window.location.reload();
         } else {
           console.log('Invalid position or data array does not exist');
@@ -140,7 +140,7 @@ const CompanyItemsManager: React.FC = () => {
 
   return (
     <div>
-      <h1>Productos</h1>
+      <h1>Productos de la empresa: {company?.name} </h1>
       <div className="container">
 
         <div className="row">
