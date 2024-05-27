@@ -1,18 +1,16 @@
-import { Card, CardContent, CardTitle } from "./ui/card";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
 import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../core/database";
-import { Product } from "../core/types";
-import { getProductImage } from "../core/storage";
+import { CompanyItem } from "../core/types";
+import { StoreItem } from '../components/StoreItem';
 
 const CarouselSize = ({ category }: { category: string }) => {
-  const [storeItems, setStoreItems] = useState<Product[] | null>(null);
+  const [storeItems, setStoreItems] = useState<CompanyItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const fetchProducts = async () => {
@@ -55,27 +53,11 @@ const CarouselSize = ({ category }: { category: string }) => {
         className="w-full h-full"
       >
         <CarouselContent>
-          {Array.from({ length: 60 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="p-1">
-                <Card>
-                  <CardContent className=" aspect-square items-center justify-center p-6">
-                    {storeItems.map((item) => (
-                      <div key={item.id}>
-                        <a
-                          className="text-decoration-none text-black"
-                          href={"/product/".concat(item.id)}
-                        >
-                          <ProductImage id={item.id} name={item.name} />
-                          <CardTitle>{item.name}</CardTitle>
-                        </a>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
+        {storeItems.map((item) => (
+          <div>
+              <StoreItem product={item} />
+          </div>
+        ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
@@ -84,30 +66,4 @@ const CarouselSize = ({ category }: { category: string }) => {
   }
 };
 
-const ProductImage = ({ id, name }: { id: string; name: string }) => {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchImage = async () => {
-      try {
-        const image = await getProductImage(id);
-        setImageUrl(image);
-      } catch (error) {
-        console.error("Error fetching image:", error);
-      }
-    };
-
-    fetchImage();
-  }, [id]);
-
-  return imageUrl ? (
-    <img
-      src={imageUrl}
-      alt={name}
-      className="w-56 h-64 rounded-lg shadow-xl bg-white"
-    />
-  ) : (
-    <div>Loading...</div>
-  );
-};
 export default CarouselSize;

@@ -17,5 +17,3 @@ function App() {
 }
 
 export default App;
-
-/* https://www.youtube.com/watch?v=lATafp15HWA refference*/

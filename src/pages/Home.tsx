@@ -1,5 +1,4 @@
 import Banner from "../components/Banner";
-import Footer from "../components/Footer";
 import CarouselSize from "../components/carousel";
 
 export function Home() {
