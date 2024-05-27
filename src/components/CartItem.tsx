@@ -1,55 +1,40 @@
 import { Button, Stack } from "react-bootstrap";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { Product } from "../core/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getProductImage } from "../core/storage";
 
 type CartItemProps = {
-  quantity: number;
-  item: Product;
+  productIdx: number;
 };
 
-export function CartItem({ item, quantity }: CartItemProps) {
-  const { removeFromCart } = useShoppingCart();
-
-  const [image, setImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const run = async () => {
-      const img = await getProductImage(item.id);
-
-      setImage(img);
-    };
-
-    run();
-  }, []);
+export function CartItem({ productIdx }: CartItemProps) {
+  const cartContext = useContext(ShoppingCartContext);
+  if (!cartContext) {
+    throw new Error('CartContext must be used within a CartProvider');
+  }
+  const { cart, removeFromCart } = cartContext;
 
   return (
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
-      <img
-        src={image ?? undefined}
-        alt="product"
-        style={{ width: "125px", height: "75px", objectFit: "cover" }}
-      />
+
       <div className="me-auto">
-        <div>
-          {item.name}{" "}
-          {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: ".65rem" }}>
-              x{quantity}
-            </span>
-          )}
-        </div>
-        <div className="text-muted" style={{ fontSize: ".75rem" }}>
-          {formatCurrency(item.price)}
-        </div>
+      {cart[productIdx].companyId}
       </div>
-      <div> {formatCurrency(item.price * quantity)}</div>
+      <div>
+      {cart[productIdx].productIdx}
+      </div>
+      <div>
+      {cart[productIdx].size}
+      </div>
+      <div>
+      {cart[productIdx].color}
+      </div>
       <Button
         variant="outline-danger"
         size="sm"
-        onClick={() => removeFromCart(item.id)}
+        onClick={() => removeFromCart(productIdx)}
       >
         &times;
       </Button>

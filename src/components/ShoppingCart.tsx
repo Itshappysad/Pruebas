@@ -1,11 +1,11 @@
 import { Offcanvas, Stack } from "react-bootstrap";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import { useAuth } from "../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../core/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getCartItems } from "../core/database";
 
 type ShoppingCartProps = {
@@ -13,25 +13,29 @@ type ShoppingCartProps = {
 };
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
-  const { closeCart, cartItems } = useShoppingCart();
+  const cartContext = useContext(ShoppingCartContext);
+  if (!cartContext) {
+    throw new Error('CartContext must be used within a CartProvider');
+  }
+  const { cart, removeFromCart } = cartContext;
   const { user } = useAuth();
   const navigate = useNavigate();
   const [items, setItems] = useState<Product[] | null>(null);
 
   useEffect(() => {
     const run = async () => {
-      const prods = await getCartItems(cartItems.map((c) => c.id));
+      const prods = await getCartItems(cart.map((c) => c.id));
       setItems(prods);
     };
     run();
-  }, [cartItems, setItems]);
+  }, [cart, setItems]);
 
   // useEffect(() => {
   //   console.log(items);
   // }, [items]);
 
   return (
-    <Offcanvas show={isOpen} onHide={closeCart} placement="end">
+    <Offcanvas placement="end">
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Carro de compras</Offcanvas.Title>
       </Offcanvas.Header>

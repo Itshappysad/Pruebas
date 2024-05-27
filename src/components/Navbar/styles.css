@@ -7,3 +7,12 @@
     font-weight: bold;
     font-size: 48px;
 }
+
+.cart-image {
+    height: 2em;
+    width: auto;
+}
+
+.cart-count {
+    font-size: 20px;
+}
