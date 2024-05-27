@@ -9,13 +9,12 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-import { app } from "../../firebase.config";
+import { app, db } from "../../firebase.config";
 import { Company, CompanyItem, Product, ResgisterUser } from "./types";
 import { FirebaseError } from "firebase/app";
 import { EditUser } from "../schemas/edit";
 import { companyType } from "../schemas/company";
 import { auth } from "./auth";
-import { RegisterProductForm } from "../schemas/product";
 
 
 export const database = getFirestore(app);
@@ -236,6 +235,18 @@ export async function getCompanyItems(id: string): Promise<CompanyItem[] | null>
     }
 
     return null;
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      console.error(e);
+    }
+    return null;
+  }
+}
+
+export async function debug(){
+  try {
+    const querySnapshot = await getDocs(collection(db, 'items'));
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (e) {
     if (e instanceof FirebaseError) {
       console.error(e);

@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SignUp from "./pages/sign-up/index.tsx";
+import Debug from "./pages/debug/index.tsx";
 import { Home } from "./pages/Home.tsx";
 import { Store } from "./pages/Store.tsx";
 import { About } from "./pages/About.tsx";
@@ -19,6 +20,7 @@ import { Company } from "./pages/Company.tsx";
 import EditItem from "./pages/EditItem.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Payment from "./pages/Payment.tsx";
+import CompanyItemsManager from "./pages/items/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "/payment",
         element: <Payment />,
+      },
+      {
+        path: "/debug",
+        element: <Debug />,
+      },
+      {
+        path: "/company-items",
+        element: <CompanyItemsManager />,
       },
     ],
   },
