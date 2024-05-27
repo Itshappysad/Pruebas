@@ -3,659 +3,78 @@
         "id": "Nlc8aohcSwNCKuceZeG1wCh7k8j2",
         "data": [
             {
+                "imageUrl": "https://media.wuerth.com/stmedia/modyf/eshop/products/std.lang.all/resolutions/normal/png-546x410px/24899625.png",
                 "price": 80000,
+                "name": "Camisa manga larga",
+                "categories": [
+                    "shirt",
+                    "50off",
+                    "new"
+                ],
                 "availability": {
                     "color": [
-                        "blanco"
+                        "white"
                     ],
                     "size": [
                         "l",
                         "xl"
                     ]
-                },
-                "name": "Camisa manga larga",
-                "imageUrl": "https://media.wuerth.com/stmedia/modyf/eshop/products/std.lang.all/resolutions/normal/png-546x410px/24899625.png",
-                "categories": [
-                    "shirt",
-                    "50off",
-                    "new"
-                ]
+                }
             },
             {
-                "name": "Pantalon lino",
                 "categories": [
                     "pant",
                     "best-seller"
                 ],
+                "name": "Pantalon lino",
                 "availability": {
-                    "size": ["xs"]
                     "color": [
-                        "negro"
+                        "black"
+                    ],
+                    "size": [
+                        "xs"
                     ]
                 },
                 "imageUrl": "https://moft.com.co/cdn/shop/products/M21-502-A0012122_900x.jpg",
                 "price": 150000
             },
             {
-                "price": 70000,
-                "name": "Camisa playa",
-                "imageUrl": "data:image/jpeg;base64,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",
-                "categories": [
-                    "shirt"
-                ],
-                "availability": {
-                    "size": [
-                        "l",
-                        "m",
-                        "xl"
-                    ],
-                    "color": [
-                        "\"negro\""
-                    ]
-                }
-            },
-            {
-                "imageUrl": "https://m.media-amazon.com/images/I/41CzK+WdHmL._AC_UY1100_.jpg",
+                "imageUrl": "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/93fb9052b738dc6da3fe80a49d55a58e.jpg",
                 "availability": {
                     "color": [
-                        "blue"
-                    ],
-                    "size": [
-                        "l",
-                        "m",
-                        "xl"
-                    ]
-                },
-                "price": "90000",
-                "name": "Slim fit Solid Casual Light Blue Shirt",
-                "categories": [
-                    "shirt"
-                ]
-            },
-            {
-                "price": "170000",
-                "imageUrl": "https://fashion.designforyou.in/wp-content/uploads/2018/12/ms016.jpeg",
-                "name": "Hi-Wear Navy Blue Formal Shirt",
-                "categories": [
-                    "shirt",
-                    "new"
-                ],
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "navyblue"
-                    ]
-                }
-            },
-            {
-                "availability": {
-                    "color": [
-                        "white",
                         "red"
                     ],
                     "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "name": "Camisa a Rayas Slim Fit con Bolsillo",
-                "imageUrl": "https://www.jiomart.com/images/product/original/441119287_coral/striped-slim-fit-shirt-with-patch-pocket-model-441119287_coral-0-202104151157.jpg?im=Resize=(500,630)",
-                "price": "70000",
-                "categories": [
-                    "shirt"
-                ]
-            },
-            {
-                "name": "Camisa a Rayas Casual ",
-                "price": "90000",
-                "availabilty": {
-                    "color": [
-                        "white"
-                    ],
-                    "size": [
                         "l",
                         "m",
-                        "xl"
-                    ]
-                },
-                "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/kz7bcsw0/shirt/z/o/h/46-lysfcslbu92282-louis-philippe-original-imagb9hazajuhbu8.jpeg?q=90&crop=false",
-                "categories": [
-                    "shirt",
-                    "new"
-                ]
-            },
-            {
-                "availability": {
-                    "color": [
-                        "grey",
-                        "black"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "price": "150000",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/pantalon_cargo_denim_bota_recta_negro_1_a105c142-d1e7-4c85-b776-72adecd38d69_1800x1800.jpg?v=1689794703",
-                "categories": [
-                    "pant",
-                    "new",
-                    "best-seller"
-                ],
-                "name": "Pantalón Cargo Denim Bota Recta"
-            },
-            {
-                "price": "225000",
-                "availability": {
-                    "color": [
-                        "black",
-                        "grey"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Slim-Track-Pants-2.0---Grises-1_1800x1800.jpg?v=1715698316",
-                "name": "Slim Trackie Pants",
-                "categories": [
-                    "best-seller",
-                    "pant"
-                ]
-            },
-            {
-                "imageUrl": "https://trueshop.co/cdn/shop/files/slim_track_pants_cafes_1_pantalones_sudaderas_1800x1800.jpg?v=1701376321",
-                "price": "220000",
-                "availaibility": {
-                    "color": [
-                        "black",
-                        "grey",
-                        "green",
-                        "brown"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "categories": [
-                    "pant",
-                    "new"
-                ],
-                "name": "Pantalones de tobillo Slim"
-            },
-            {
-                "name": "Hoodie Box Fit Curvy Logo Washed",
-                "availability": {
-                    "color": [
-                        "grey",
-                        "green",
-                        "black"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
                         "xl",
                         "xxl"
                     ]
                 },
-                "price": "325000",
-                "categories": [
-                    "new",
-                    "best-seller",
-                    "shirt"
-                ],
-                "imageUrl": "https://trueshop.co/cdn/shop/files/HOODIE_COBRE_MADE_IN_COLOMBIA_1_687ea04c-08e6-470c-8a1d-fb6543f655eb_1800x1800.jpg?v=1715877399"
-            },
-            {
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Camiseta-Oversized-Lavado-Get-Lost---Camel-1_8900cc89-d54c-4e31-8aa4-40feebcbdd23_1800x1800.jpg?v=1715877471",
-                "categories": [
-                    "shirt",
-                    "best-seller"
-                ],
-                "price": "179000",
-                "availability": {
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "khaki",
-                        "grey",
-                        "darkgrey"
-                    ]
-                },
-                "name": "Camiseta Oversized Lavado"
-            },
-            {
-                "categories": [
-                    "accessory"
-                ],
-                "name": "Beanie clasica",
-                "price": "60000",
-                "availability": {
-                    "color": [
-                        "white",
-                        "black",
-                        "blue",
-                        "orange"
-                    ],
-                    "size": [
-                        "m"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Beanie_Clasico_Arena_1_1800x1800.jpg?v=1709306154"
-            },
-            {
-                "name": "Camiseta Script Logo",
-                "categories": [
-                    "shirt"
-                ],
-                "price": "130000",
-                "availability": {
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "blue",
-                        "white",
-                        "green",
-                        "pink",
-                        "grey",
-                        "black"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Camiseta_Scrip_Logo_Menta_1_1800x1800.jpg?v=1710880085"
-            },
-            {
-                "imageUrl": "https://trueshop.co/cdn/shop/files/true_basic_shorts_crema_1_1800x1800.jpg?v=1703254033",
-                "price": "150000",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "white",
-                        "beige"
-                    ]
-                },
-                "name": "Shorts Clásicos",
-                "categories": [
-                    "pant"
-                ]
-            },
-            {
                 "categories": [
                     "shirt",
                     "new"
                 ],
-                "availability": {
-                    "color": [
-                        "white",
-                        "black",
-                        "beige"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "name": "Camiseta Oversized Cuello Tejido",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camiseta_oversized_cuello_tejido_crema_1_1800x1800.jpg?v=1705097982",
-                "price": "150000"
-            },
-            {
-                "categories": [
-                    "pant"
-                ],
-                "price": "299000",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Pantalon_Cargo_Multipocket_Lavado_Camel_1_c12828a8-9413-4a4a-b7ab-bf26c5a79a60_1800x1800.jpg?v=1715816194",
-                "availability": {
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "beige",
-                        "green"
-                    ]
-                },
-                "name": "Pantalón Cargo Multipocket"
-            },
-            {
-                "price": "180000",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Camiseta-Washed-Oversized-Dream---Verde-1_1800x1800.jpg?v=1715792879",
-                "categories": [
-                    "shirt",
-                    "best-seller"
-                ],
-                "name": "Camiseta Oversized Washed Dream ",
-                "availability": {
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "grey",
-                        "green",
-                        "black"
-                    ]
-                }
-            },
-            {
-                "price": "225000",
-                "availability": {
-                    "color": [
-                        "green",
-                        "beige",
-                        "black",
-                        "grey"
-                    ],
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "name": "Parachute Cargo Pants",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/parachute_cargo_pants_verde_pino_2563d0e3-5053-4ab3-af9b-e3047362c911_1800x1800.jpg?v=1716231377",
-                "categories": [
-                    "pants"
-                ]
-            },
-            {
-                "categories": [
-                    "pants"
-                ],
-                "price": "230000",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "green",
-                        "black"
-                    ]
-                },
-                "name": "Jogger Drill Clásico",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Jogger_Drill_Clasico_Verde_Militar_1_1800x1800.jpg?v=1712586399"
-            },
-            {
-                "name": "Camiseta Creative",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/CREATIVE_GLOBAL_DEPARTMENT_T-SHIRT_ROJO-1_1800x1800.jpg?v=1716407867",
-                "availability": {
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "red",
-                        "beige",
-                        "blue",
-                        "black"
-                    ]
-                },
-                "price": "140000",
-                "categories": [
-                    "shirt"
-                ]
-            },
-            {
-                "name": "Jorts Básicos True",
-                "categories": [
-                    "pant"
-                ],
-                "imageUrl": "https://trueshop.co/cdn/shop/files/jorts_basico_true_ivory_1_pantalones_sudaderas_daeaf9dc-c9bb-4efb-ab71-5b5bd22a11fb_1800x1800.jpg?v=1694726008",
-                "price": "102500",
-                "availability": {
-                    "color": [
-                        "white"
-                    ],
-                    "size": [
-                        "l",
-                        "m",
-                        "xl"
-                    ]
-                }
-            },
-            {
-                "name": "Camiseta Clásica True",
-                "availability": {
-                    "size": [
-                        "l",
-                        "m",
-                        "xl"
-                    ],
-                    "color": [
-                        "white",
-                        "black"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/CLASSIC_T-SHIRT_WHITE_0_1800x1800.jpg?v=1704839987",
-                "price": "130000",
-                "categories": [
-                    "shirt"
-                ]
-            },
-            {
-                "price": "160000",
-                "categories": [
-                    "shirt"
-                ],
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camiseta_box_fit_retreat_blanca_1_1800x1800.jpg?v=1710339599",
-                "name": "Camiseta Box Fit Retreat",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "white",
-                        "black"
-                    ]
-                }
-            },
-            {
-                "categories": [
-                    "shirt"
-                ],
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "blue"
-                    ]
-                },
-                "name": "Camiseta Box Fit Rayas",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camiseta_box_fit_rayas_azul_1_1800x1800.jpg?v=1706127634",
-                "price": "160000"
-            },
-            {
-                "imageUrl": "https://trueshop.co/cdn/shop/files/classic_shorts_2.0_black_1_08375155-e5f8-4932-87f0-df6f3f7d51d6_1800x1800.jpg?v=1703198308",
-                "price": "150000",
-                "name": "Shorts Clásicos",
-                "availability": {
-                    "color": [
-                        "black",
-                        "white"
-                    ],
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "categories": [
-                    "pant"
-                ]
-            },
-            {
-                "price": "165000",
-                "name": "Camiseta Box Fit The House Of True",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/BOXFIT_AZUL_OSCURO_THE_HOUSE_OF_TRUE_1_1800x1800.jpg?v=1708697524",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "darkblue",
-                        "white",
-                        "mint"
-                    ]
-                },
-                "categories": [
-                    "shirt",
-                    "new"
-                ]
-            },
-            {
-                "categories": [
-                    "shirt"
-                ],
-                "price": "165000",
-                "name": "Camiseta Oversized Freedom",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Camiseta_Oversized_Freedom_Crema_1_1800x1800.jpg?v=1706905759",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "black",
-                        "white"
-                    ]
-                }
-            },
-            {
-                "price": "150000",
-                "name": "Camiseta Oversized Medellín",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "white"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/Camiseta_Oversized_Medellin_Blanca_1_1800x1800.jpg?v=1699471618",
-                "categories": [
-                    "shirt",
-                    "new"
-                ]
-            },
-            {
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camiseta_creative_orange_1_1800x1800.jpg?v=1709074671",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "orange"
-                    ]
-                },
-                "name": "Camiseta Oversized Tie Dye ",
-                "categories": [
-                    "shirt",
-                    "new"
-                ],
-                "price": "160000"
-            },
-            {
-                "availability": {
-                    "color": [
-                        "white"
-                    ],
-                    "size": [
-                        "s",
-                        "m",
-                        "l",
-                        "xl"
-                    ]
-                },
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camisa_manga_larga_retreat_crema_1_1800x1800.jpg?v=1710167503",
-                "name": "Camisa Satinada Manga Larga Retreat",
-                "categories": [
-                    "new",
-                    "shirt",
-                    "best-seller"
-                ],
-                "price": "280000"
-            },
-            {
-                "price": "180000",
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "black"
-                    ]
-                },
-                "categories": [
-                    "shirt",
-                    "new",
-                    "best-seller"
-                ],
-                "name": "Camisa Lino Manga Larga ",
-                "imageUrl": "https://trueshop.co/cdn/shop/files/camisa_manga_larga_retreat_negra_1_1800x1800.jpg?v=1710167510"
-            },
-            {
-                "price": 2,
-                "imageUrl": "asd",
-                "categories": [
-                    "asdasd"
-                ],
-                "availability": {
-                    "size": [
-                        "m",
-                        "l",
-                        "xl"
-                    ],
-                    "color": [
-                        "black"
-                    ]
-                },
-                "name": "asdasd"
+                "price": 70000,
+                "name": "Camisa Playa"
             }
         ]
+    }
+]
+
+
+
+[
+    {
+        company: "Nlc8aohcSwNCKuceZeG1wCh7k8j2",
+        product: 0,
+        size:"xl",
+        color: "red"
+    },
+    {
+        company: "Nlc8aohcSwNCKuceZeG1wCh7k8j2",
+        product: 3,
+        size:"s",
+        color: "blue"
     }
 ]

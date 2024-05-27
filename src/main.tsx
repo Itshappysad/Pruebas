@@ -22,6 +22,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Payment from "./pages/Payment.tsx";
 import CompanyItemsManager from "./pages/items/index.tsx";
 import AddCompanyItem from "./pages/addItem/index.tsx";
+import ShoppingCartPage from "./pages/cart/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/company-item/new",
         element: <AddCompanyItem />,
+      },
+      {
+        path: "/shopping-cart",
+        element: <ShoppingCartPage />,
       },
     ],
   },

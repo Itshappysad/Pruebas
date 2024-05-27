@@ -13,7 +13,6 @@ export interface Availability {
   }
   
   export interface ItemDocument {
-    id: string;
     data: ItemData[];
   }
   

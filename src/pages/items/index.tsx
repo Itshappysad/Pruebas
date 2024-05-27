@@ -1,42 +1,40 @@
 // ItemsList.tsx
 import React, { useEffect, useState } from 'react';
-import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from "../../../firebase.config";
-import { ItemDocument, ItemData } from './types';
+import { ItemDocument } from './types';
 import './styles.css';
 import { useAuth } from '../../context/useAuth';
 
 const CompanyItemsManager: React.FC = () => {
   const { user, company } = useAuth();
   const [items, setItems] = useState<ItemDocument[]>([])
-  const [loading, setLoading] = useState(true)
-  const [newItem, setNewItem] = useState<ItemData>({
-    imageUrl: '',
-    categories: [],
-    name: '',
-    price: 0,
-    availability: { size: [], color: [] },
-  })
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchItems = async () => {
+    if (!user?.id) {
+      return;
+    }
+
+    const fetchItem = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'items'));
-        const itemsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...(doc.data() as Omit<ItemDocument, 'id'>),
-        }));
-        setItems(itemsData);
+        const docRef = doc(db, 'items', user.id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setItems([{ id: docSnap.id, ...docSnap.data() }]);
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
-        console.error("Error fetching items: ", error);
+        console.error("Error fetching item: ", error);
       } finally {
         setLoading(false);
       }
     };
+    fetchItem();
+  }, [user?.id]); 
 
-    fetchItems();
-  }, []);
 
   const deleteItem = async (itemIndex: number) => {
     console.log("I will delete the item: "+itemIndex+" from company: "+ company?.name)
@@ -67,9 +65,13 @@ const CompanyItemsManager: React.FC = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Cargando productos...</div>;
   }
 
+  if (!items) {
+    return <div>No hay productos</div>;
+  }
+  console.log(items);
   return (
     <div>
       <h1>Productos de la empresa: {company?.name} </h1>
@@ -97,7 +99,6 @@ const CompanyItemsManager: React.FC = () => {
             <p className="col-sm">{dataItem.availability.size.join(', ')}</p>
             <p className="col-sm">{dataItem.availability.color.join(', ')}</p>
             <div className="col-sm buttons">
-              {/* <button onClick={() => editItem(item.id, index, { ...dataItem, name: 'Updated Name' })}>Update</button> */}
               <button className="btn btn-danger" onClick={() => deleteItem(index)}>Eliminar</button>
             </div>
           </div>
