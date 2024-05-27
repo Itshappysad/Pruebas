@@ -2,7 +2,6 @@ import { Card } from 'react-bootstrap';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { CompanyItem } from '../core/types';
 import StoreDialog from './StoreDialog';
-import { useEffect, useState } from 'react';
 
 type StoreItemProps = {
   product: CompanyItem;
@@ -11,22 +10,12 @@ type StoreItemProps = {
 export function StoreItem({ product }: StoreItemProps) {
   const { name, price, imageUrl } = product;
 
-  const [image, setImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const run = async () => {
-      setImage(imageUrl);
-    };
-
-    run();
-  }, []);
-
   return (
     <StoreDialog product={product} img={imageUrl ?? undefined}>
       <Card>
         <Card.Img
           variant='top'
-          src={image ?? undefined}
+          src={imageUrl}
           style={{ objectFit: 'cover', height: '450px' }}
         />
 
