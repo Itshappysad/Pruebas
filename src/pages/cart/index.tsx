@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ShoppingCartContext} from '../../context/ShoppingCartContext';
 import './styles.css';
+import { formatCurrency } from '../../utilities/formatCurrency';
 
 
 const ShoppingCartPage = () => {
@@ -29,7 +30,7 @@ const ShoppingCartPage = () => {
               <h5 className="col-sm">{item.name}</h5>
               <p className="col-sm">{item.size}</p>
               <p className="col-sm">{item.color}</p>
-              <p className="col-sm">{item.price}</p>
+              <p className="col-sm">{formatCurrency(item.price)}</p>
               <button className="col-sm btn btn-outline-dark"
                   onClick={() => removeFromCart(index)}>
                     Eliminar
@@ -40,7 +41,8 @@ const ShoppingCartPage = () => {
       </div>
       <div className="row">
         <div className="col-md-12">
-          <h3>Total: ${totalPrice}</h3>
+          <h3>Total</h3>
+          <h4>{formatCurrency(totalPrice)}</h4>
         </div>
       </div>
     </div>
