@@ -47,7 +47,7 @@ const ShoppingCartPage = () => {
       </div>
 
       <div className='w-full mt-10'>
-        <a className='w-full btn btn-primary' href='/payment'> Pagar</a>
+        <a className='m-10 w-full btn btn-dark' href='/payment'> Pagar</a>
       </div>
 
     </div>

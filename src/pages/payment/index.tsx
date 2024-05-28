@@ -3,6 +3,7 @@ import { ShoppingCartContext } from '../../context/ShoppingCartContext';
 import './styles.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useAuth } from '../../context/useAuth';
+import { toast } from 'sonner';
 
 
 const PaymentPage = () => {
@@ -18,15 +19,6 @@ const PaymentPage = () => {
 
 
       <h1>Realizar pago</h1>
-
-      <div className="flex">
-        <div className="">
-          Total
-        </div>
-        <div className="">
-          {formatCurrency(totalPrice)}
-        </div>
-      </div>
 
       <div className="mt-10 container text-center">
         <div className="row border">
@@ -70,7 +62,10 @@ const PaymentPage = () => {
         </div>
       </div>
       <div className='w-full mt-10'>
-        <button className='w-full btn btn-primary'> Pagar</button>
+        <button className='m-10 w-full btn btn-dark'
+          onClick={() => {
+            toast.success('Gracias por tu compra. La orden será creada y se enviará el producto cuando se confirme el pago.')
+          }}> Finalizar compra</button>
       </div>
       
     </div>
