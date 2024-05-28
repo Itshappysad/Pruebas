@@ -23,6 +23,7 @@ import Payment from "./pages/Payment.tsx";
 import CompanyItemsManager from "./pages/items/index.tsx";
 import AddCompanyItem from "./pages/addItem/index.tsx";
 import ShoppingCartPage from "./pages/cart/index.tsx";
+import PaymentPage from "./pages/payment/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -55,10 +56,6 @@ const router = createBrowserRouter([
         element: <EditItem />,
       },
       {
-        path: "/payment",
-        element: <Payment />,
-      },
-      {
         path: "/debug",
         element: <Debug />,
       },
@@ -73,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/shopping-cart",
         element: <ShoppingCartPage />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentPage />,
       },
     ],
   },

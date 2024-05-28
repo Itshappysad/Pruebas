@@ -45,6 +45,11 @@ const ShoppingCartPage = () => {
           <h4>{formatCurrency(totalPrice)}</h4>
         </div>
       </div>
+
+      <div className='w-full mt-10'>
+        <a className='w-full btn btn-primary' href='/payment'> Pagar</a>
+      </div>
+
     </div>
   );
 };
