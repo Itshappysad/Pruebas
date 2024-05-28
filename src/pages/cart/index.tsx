@@ -8,7 +8,7 @@ const ShoppingCartPage = () => {
   if (!cartContext) {
     throw new Error('No se encontró el contexto para el carrito.');
   }
-  const { cart } = cartContext;
+  const { cart, removeFromCart } = cartContext;
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
@@ -21,14 +21,20 @@ const ShoppingCartPage = () => {
               <h2 className="col-sm">Talla</h2>
               <h2 className="col-sm">Color</h2>
               <h2 className="col-sm">Precio</h2>
+              <div className="col-sm"> </div>
             </div>
-          {cart.map((item) => (
+          {cart.map((item, index) => (
             <div className="row cart-row">
               <img className="col-sm item-cart-img" src={item.imageUrl} alt={item.name} />
               <h5 className="col-sm">{item.name}</h5>
               <p className="col-sm">{item.size}</p>
               <p className="col-sm">{item.color}</p>
               <p className="col-sm">{item.price}</p>
+              <button className="col-sm btn btn-outline-dark"
+                  onClick={() => removeFromCart(index)}>
+                    Eliminar
+          </button>
+
             </div>
           ))}
       </div>
