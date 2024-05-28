@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from "../../../firebase.config";
 import { useAuth } from '../../context/useAuth';
+import { toast } from 'sonner';
 
 const colorsList = [
   "aqua",
@@ -69,7 +70,7 @@ const AddCompanyItem = () => {
       await updateDoc(docRef, {
         data: arrayUnion(newItem)
       });
-      alert('El producto agregado.');
+      toast.info('El producto fue agregado.');
       // Clear the form
       setName('');
       setImageUrl('');

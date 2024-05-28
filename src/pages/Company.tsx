@@ -8,8 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type companyTypeForm, companyObjectForm } from "../schemas/company";
 import CompanyPictureButtons from "../components/Companybutton";
-import { getCompany, editCompany } from "../core/database";
-import { Company as CompanyDBType } from "../core/types";
+import { saveCompany } from "../core/database";
 import { toast } from "sonner";
 
 export function Company() {
@@ -58,20 +57,10 @@ export function Company() {
       }
 
 
-      const success = await editCompany({
+      const success = await saveCompany({
         id: user.id,
         companyData: companyData,
       });
-
-      const companyItems = await getItems({
-        id: user.id
-      });
-
-      if (companyItems === null) {
-        const emptyItemList = []
-        
-      }
-      
 
       if (success) {
         toast.success("Empresa guardada exitosamente!");

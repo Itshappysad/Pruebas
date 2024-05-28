@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, ReactNode, FC } from 'react';
+import { toast } from "sonner";
 
 interface CartItem {
   companyId: string;
@@ -33,7 +34,7 @@ const ShoppingCartProvider: FC<{ children: ReactNode }> = ({ children }) => {
       ...prevCart,
       { companyId, productIdx, name, size, color, price, imageUrl }
     ]);
-    alert('El producto se añadió al carrito.');
+    toast.info('El producto se añadió al carrito.');
   };
 
   const removeFromCart = (index: number) => {

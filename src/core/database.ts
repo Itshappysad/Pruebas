@@ -184,7 +184,20 @@ export async function getCompany(id: string): Promise<Company | null> {
   }
 }
 
-export async function editCompany({
+const checkIfCompanyHasItemsDocAndCreate = async (companyId) => {
+  try {
+    const docRef = doc(db, 'items', companyId);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      await setDoc(docRef, { data: [] });
+    }
+  } catch (error) {
+    console.error("Error al crear la base de datos de productos para la empresa: ", error);
+  }
+};
+
+export async function saveCompany({
   id,
   companyData,
 }: {
@@ -193,6 +206,8 @@ export async function editCompany({
 }) {
   try {
     await setDoc(doc(database, "companies", id), companyData, { merge: true });
+    await checkIfCompanyHasItemsDocAndCreate(id);
+      
     return true;
   } catch (e) {
     return false;
